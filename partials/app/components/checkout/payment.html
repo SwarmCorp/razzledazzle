@@ -1,0 +1,140 @@
+<header da-checkout-header></header>
+<section da-checkout-payment
+         class="container">
+	<div class="payment eight columns centered">
+		<h2 class="screen-title">Payment</h2>
+		<p class="step-description">Please choose the amount you want to purchase</p>
+		<div class="amount">
+			<form novalidate class="four centered columns">
+				<input type="number"
+				       ng-model="bundlesAmount" />
+				<div class="amount-buttons">
+					<a href
+					   class="amount-add"
+					   ng-click="addAmount()">
+						<i class="icon icon-plus"></i>
+					</a>
+					<a href
+					   class="amount-subtract"
+					   ng-class="{disabled: substractionDisabled}"
+					   ng-click="subtractAmount()">
+						<i class="icon icon-minus"></i>
+					</a>
+				</div>
+			</form>
+			<p>You'll receive {{bundle.assets[0].quantity * bundlesAmount}} {{project.project_coin}} coin{{ bundle.assets[0].quantity * bundlesAmount > 1 ? 's' : ''}}.</p>
+			<p>1 {{project.project_coin}} = {{bundle.price | satoshiToBTC}}BTC (${{ (bundle.price * exchangeRate) | satoshiToBTC | number : 2}})</p>
+		</div>
+		<div class="payment-method six centered columns">
+			<span ng-class="{active: paymentMethod=='bitcoin'}">
+				{{ bundle.price * bundlesAmount | satoshiToBTC }}BTC</span><span ng-class="{active: paymentMethod=='fiat'}">
+				{{ (bundle.price * exchangeRate * bundlesAmount | satoshiToBTC) | number : 2 }}USD
+			</span>
+			<a href
+			   class="simple button"
+			   ng-class="paymentMethod=='bitcoin' || !paymentMethod ? 'yellow': 'gray'"
+			   ng-click="useBitcoin()">
+				Pay with Bitcoin
+			</a><a href
+			       class="simple button fiat"
+			       ng-class="paymentMethod=='fiat' || !paymentMethod ? 'green': 'gray' "
+			       ng-click="useFiat()">
+				Pay with Dollars
+			</a>
+		</div>
+		<div class="method-bitcoin"
+		     ng-show="paymentMethod=='bitcoin'">
+			<div class="payment-qr-holder eight centered columns">
+				<div da-spinner ng-hide="paymentAddress"></div>
+				<div class="total three alpha columns"
+				     ng-show="paymentAddress">
+					<span><i class="icon icon-bitcoin"></i>{{ bundle.price * bundlesAmount | satoshiToBTC }}</span>
+				</div>
+				<div class="address-pointer one column"
+				     ng-show="paymentAddress">&nbsp;<i class="angle icon icon-angle-right"></i></div>
+				<div class="address-holder three omega columns">
+					<qr ng-if="paymentAddress"
+					    text="paymentAddress"
+					    type-number="4"
+					    correction-level="Q"
+					    size="160"
+					    image="true" />
+				</div>
+			</div>
+			<div class="eight centered columns">
+				<div class="address-field"
+				     ng-show="paymentAddress">
+					<span>{{paymentAddress}}</span>
+					<a href
+					   da-copy-link
+					   class="link-copy"
+					   ng-show="linkVisible">
+						<i class="icon icon-copy"></i>{{copyLinkText}}
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="method-fiat"
+		     ng-show="paymentMethod=='fiat'">
+			<form novalidate
+			      name="paymentForm"
+			      class="six centered columns"
+			      ng-submit="doPayment()">
+				<label class="three columns alpha">
+					First name
+					<input type="text"
+					       name="firstName"
+					       ng-class="{ invalid: hasError(paymentForm.firstName) }"
+					       ng-model="payment.firstName"
+					       ng-required="true" />
+				</label>
+				<label class="three columns omega">
+					Last name
+					<input type="text"
+					       name="lastName"
+					       ng-class="{ invalid: hasError(paymentForm.lastName) }"
+					       ng-model="payment.lastName"
+					       ng-required="true" />
+				</label>
+				<label>
+					Credit card number
+					<input type="text"
+					       name="cardNumber"
+					       ng-class="{ invalid: hasError(paymentForm.cardNumber) }"
+					       ng-model="payment.cardNumber"
+					       ng-trim="false"
+					       ng-required="true" />
+				</label>
+				<div class="expiration-date three alpha columns">
+					<label>Expiration date</label>
+					<input type="text"
+					       class="alpha"
+					       name="cardExpirationMM"
+					       placeholder="MM"
+					       ng-class="{ invalid: hasError(paymentForm.cardExpirationMM) }"
+					       ng-model="payment.cardExpirationMM"
+					       ng-required="true" />
+					<input type="text"
+					       class="omega"
+					       name="cardExpirationYY"
+					       placeholder="YYYY"
+					       ng-class="{ invalid: hasError(paymentForm.cardExpirationYY) }"
+					       ng-model="payment.cardExpirationYY"
+					       ng-required="true" />
+				</div>
+				<div class="cvc three omega columns">
+					<label>CVC</label>
+					<input type="text"
+					       name="cardCVC"
+					       ng-class="{ invalid: hasError(paymentForm.cardCVC) }"
+					       ng-model="payment.cardCVC"
+					       ng-required="true" />
+					<img src="images/checkout/cvc.jpg" alt="" />
+				</div>
+				<span class="stripe-error" ng-if="paymentDeclined">Your card was declined.</span>
+				<input class="simple green" type="submit" value="Submit Payment" />
+			</form>
+		</div>
+	</div>
+
+</section>

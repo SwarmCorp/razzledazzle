@@ -1,0 +1,29 @@
+=animation($animation)
+	animation: #{$animation}
+	-webkit-animation: #{$animation}
+
+=animation-keyframes($name)
+	@keyframes #{$name}
+		@content
+	@-webkit-keyframes #{$name}
+		@content
+
+=animation-name($animation)
+	animation-name: #{$animation}
+	-webkit-animation-name: #{$animation}
+
+=animation-duration($duration)
+	animation-duration: #{$duration}
+	-webkit-animation-duration: #{$duration}
+
+=animation-delay($delay)
+	animation-delay: #{$delay}
+	-webkit-animation-delay: #{$delay}
+
+=animation-direction($direction)
+	animation-duration: #{$direction}
+	-webkit-animation-duration: #{$direction}
+
+=animation-fill-mode($mode)
+	animation-fill-mode: #{$mode}
+	-webkit-animation-fill-mode: #{$mode}

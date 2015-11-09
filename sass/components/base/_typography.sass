@@ -1,0 +1,140 @@
+@import 'variables'
+@import 'mixins'
+
+// Basic Styles
+html
+	font-size: 16px
+	height: 100%
+	body
+		font: 62.5%/1.2em $HelveticaNeueLt
+		color: $textColor
+		background: $backgroundColor
+		min-height: 100%
+		height: auto !important
+		overflow-x: hidden
+		position: relative
+		padding-bottom: 140px
+		transition: background .5s
+		-webkit-font-smoothing: antialiased
+		-webkit-text-size-adjust: 100%
+		-moz-osx-font-smoothing: grayscale
+
+	// ng-cloak used by Angular to hide content while processing
+	[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak
+		display: none !important
+
+// Prevent ugly iOS highlight
+*
+	-webkit-tap-highlight-color: rgba($blackColor, 0)
+
+// Typography
+h1, h2, h3, h4, h5, h6
+	font-family: $HelveticaNeueLt
+	font-weight: normal
+	line-height: 1.2em
+	a
+		font-weight: inherit
+h1
+	font-size: 4.2em
+	margin-bottom: 14px
+	b
+		font-family: $HelveticaNeueMedium
+h2
+	font-size: 2.8em
+	margin-bottom: 10px
+h3
+	font-size: 2.2em
+	margin-bottom: 8px
+h4
+	font-size: 2.1em
+	margin-bottom: 4px
+h5
+	font-size: 1.7em
+h6
+	font-size: 1.4em
+
+p
+	font-family: $HelveticaNeueRoman
+	font-size: 1.6em
+	line-height: 1.5em
+	margin: 0 0 20px 0
+	b
+		font-family: $HelveticaNeueBold
+	i
+		font-family: $HelveticaNeueIt
+	img
+		margin: 0
+
+b
+	font-family: $HelveticaNeueBold
+
+// Links
+a, a:visited
+	text-decoration: none
+	outline: 0
+	transition: color .4s
+	color: $linkColor
+a:hover, a:focus
+	text-decoration: none
+	color: $linkHoverColor
+p a, p a:visited
+	line-height: inherit
+
+// Lists
+ul, ol
+	margin-bottom: 20px
+ul
+	list-style: none outside
+ol
+	list-style: decimal
+	margin-left: 30px
+ul ul, ul ol,
+ol ol, ol ul
+	margin: 4px 0 5px 30px
+	font-size: 90%
+	li
+		margin-bottom: 6px
+li
+	line-height: inherit
+	margin-bottom: 12px
+	p
+		line-height: inherit
+
+.align-center
+	text-align: center
+
+// Custom form elements
+.checkbox-custom
+	display: inline-block
+	width: 20px
+	height: 20px
+	background: $whiteColor
+	border: 2px solid $grayColor
+	margin-right: 15px
+	box-sizing: border-box
+	&.checked
+		position: relative
+		&:after
+			content: ""
+			position: absolute
+			width: 32px
+			height: 38px
+			left: -4px
+			bottom: 2px
+			background: url(image-url('checkout/checkbox-checked.png', true, false)) no-repeat 0 0 transparent
+			+image-2x(image-url('checkout/checkbox-checked@2x.png', true, false), 32px, 38px)
+	+ label
+		position: relative
+		top: -4px
+		font-size: inherit
+		display: inline
+
+// Icons
+.icon
+	display: inline-block
+	font-family: $SwarmIcon
+	font-size: 1em
+	line-height: 1em
+	font-style: normal
+	font-weight: normal
+	text-decoration: none

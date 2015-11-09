@@ -1,0 +1,78 @@
+<div class="content">
+	<div class="container">
+		<form novalidate
+		      name="form.signup"
+		      class="signup-form twelve centered columns"
+		      ng-submit="signup()">
+			<h2>Please finish Sign Up process.</h2>
+			<h3>It will take less than one minute</h3>
+			<div class="eight centered columns">
+				<label class="four alpha columns">
+					First name
+					<span class="error" ng-show="hasError(form.signup.firstName)">{{form.signup.firstName.errorMessage}}</span>
+					<input type="text"
+					       name="firstName"
+					       ng-class="{ invalid: hasError(form.signup.firstName) }"
+					       ng-model="signup.firstName"
+					       ng-required="true" />
+				</label>
+				<label class="four omega columns">
+					Last name
+					<span class="error" ng-show="hasError(form.signup.lastName)">{{form.signup.lastName.errorMessage}}</span>
+					<input type="text"
+					       name="lastName"
+					       ng-class="{ invalid: hasError(form.signup.lastName) }"
+					       ng-model="signup.lastName"
+					       ng-required="true" />
+				</label>
+				<label class="eight alpha columns">
+					Email
+					<span class="error" ng-show="hasError(form.signup.email)">{{form.signup.email.errorMessage}}</span>
+					<input type="email"
+					       name="email"
+					       ng-class="{ invalid: hasError(form.signup.email) }"
+					       ng-model="userEmail"
+					       disabled="disabled" />
+				</label>
+				<label class="four alpha columns">
+					<span class="error" ng-show="hasError(form.signup.password)">{{form.signup.password.errorMessage}}</span>
+					New Password
+					<input type="password"
+					       name="password"
+					       ng-class="{ invalid: hasError(form.signup.password) }"
+					       ng-model="signup.password"
+					       ng-required="passwordRequired" />
+				</label>
+				<label class="four omega columns">
+					<span class="error" ng-show="hasError(form.signup.passwordConfirm)">{{form.signup.passwordConfirm.errorMessage}}</span>
+					Confirm new password
+					<input type="password"
+					       name="passwordConfirm"
+					       ng-class="{ invalid: !passwordsMatch(form.signup.password, form.signup.passwordConfirm) }"
+					       ng-model="signup.passwordConfirm"
+					       ng-required="passwordRequired" />
+				</label>
+				<label class="field-input eight alpha columns">
+					Wallet
+					<input type="text"
+					       name="wallet"
+					       ng-model="userWallet.public"
+					       disabled="disabled" />
+					<span class="wallet-link"
+					      ng-if="!walletDownloaded">
+						Please <a href ng-click="downloadWallet()">download</a> your paper wallet before you can proceed!
+					</span>
+				</label>
+				<div ng-if="walletDownloaded">
+					<input type="submit"
+					       value="Sign up"
+					       class="button green simple">
+					<p class="terms">
+						By signing up, I agree to Swarm's <a href="/terms" target="_blank">Terms of Service</a> and
+						<a href="/privacy-policy" target="_blank">Privacy Policy</a>.
+					</p>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

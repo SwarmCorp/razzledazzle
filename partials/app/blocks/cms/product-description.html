@@ -1,0 +1,102 @@
+<div class="cms-product-description cms-section">
+		<h5>Project description</h5>
+		<ul class="project-description"
+		    ng-if="projectData.description">
+			<li class="project-description-paragraph"
+			    ng-repeat="paragraph in projectData.description track by $index">
+				<div class="project-description-content"
+				     ng-class="{'content-text': paragraph.type == 'text', 'edit-mode': paragraph.editMode}">
+					<div ng-if="!paragraph.editMode">
+						<div ng-if="paragraph.type == 'text'"
+						     ng-bind-html="paragraph.value"></div>
+						<img alt=""
+						     ng-if="paragraph.type == 'image'"
+						     ng-src="{{paragraph.value}}" />
+						<div ng-if="paragraph.type == 'video'">
+							<iframe style="width: 248px; height: 140px;" ng-src="{{trustSrc(paragraph.value)}}" frameborder="0" allowfullscreen></iframe>
+						</div>
+					</div>
+					<div ng-if="paragraph.editMode">
+						<textarea redactor
+						          ng-if="paragraph.type == 'text'"
+						          ng-class="{'invalid': $invalid && $touched}"
+						          ng-required="true"
+						          ng-model="paragraph.value"></textarea>
+						<div class="video-link-edit" ng-if="paragraph.type == 'video'">
+							Youtube or Vimeo video URL
+							<input type="text"
+							       ng-class="{'invalid': $invalid && $touched}"
+							       ng-required="true"
+							       ng-model="paragraph.value" />
+							<span>Only links like <b>https://www.youtube.com/embed/XQu8TTBmGhA</b> or <b>https://player.vimeo.com/video/87110435</b> are allowed</span>
+						</div>
+						<a href
+						   class="five centered columns green button"
+						   ng-click="saveEditedParagraph($index)">Save {{paragraph.type}}</a>
+						<a href
+						   class="edit-cancel"
+						   ng-click="cancelParagraphEdit($index)">Cancel</a>
+					</div>
+				</div>
+				<div filepicker
+				     ng-if="paragraph.type == 'image'"
+				     path="/projectsFiles/"
+				     container="swarm.shandro"
+				     callback="addDescriptionImage(file, $index)"
+				     mimetype="'image/*'"
+				     multiple=false
+				     ng-if="!descriptionNotFilledIn"><a href class="paragraph-edit"></a></div>
+				<a href class="paragraph-edit"
+				   ng-if="paragraph.type !== 'image' && !paragraph.editMode"
+				   ng-click="editParagraph($index)"></a>
+				<a href class="paragraph-delete"
+				   ng-click="deleteParagraph($index)"></a>
+			</li>
+		</ul>
+		<nav class="new-paragraph-actions">
+			<a href
+			   class="blue button"
+			   ng-if="!descriptionNotFilledIn"
+			   ng-click="addDescriptionVideo()">Add video</a>
+			<div filepicker
+			     path="/projectsFiles/"
+			     pickerclass="blue button"
+			     container="swarm.shandro"
+			     callback="addDescriptionImage(file)"
+			     mimetype="'image/*'"
+			     multiple=false
+			     ng-if="!descriptionNotFilledIn">Add image</div>
+			<a href
+			   class="blue button"
+			   ng-if="!descriptionNotFilledIn"
+			   ng-click="addDescriptionText()">Add text</a>
+		</nav>
+		<div class="new-paragraph"
+		     ng-form="form.projectDescription_{{$index}}"
+		     ng-if="!paragraph.filledIn"
+		     ng-repeat="paragraph in projectDescription track by $index">
+			<label ng-if="paragraph.type == 'video'">
+				Youtube or Vimeo video URL
+				<input type="text"
+				       name="descriptionVideo_{{paragraph.name}}"
+				       ng-class="{'invalid': $invalid && $touched}"
+				       ng-required="true"
+				       ng-model="paragraph.value" />
+				<span>Only links like <b>https://www.youtube.com/embed/XQu8TTBmGhA</b> or <b>https://player.vimeo.com/video/87110435</b> are allowed</span>
+			</label>
+			<label ng-if="paragraph.type == 'text'">
+				Paragraph of text
+				<textarea redactor
+				          name="descriptionText_{{paragraph.name}}"
+				          ng-class="{'invalid': $invalid && $touched}"
+				          ng-required="true"
+				          ng-model="paragraph.value"></textarea>
+			</label>
+			<a href
+			   class="new-save five centered columns green button"
+			   ng-click="saveParagraph(paragraph, $index)">Save {{paragraph.type}}</a>
+			<a href
+			   class="edit-cancel"
+			   ng-click="cancelParagraphCreation(paragraph, $index)">Cancel</a>
+		</div>
+</div>

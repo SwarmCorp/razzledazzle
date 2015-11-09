@@ -1,0 +1,25 @@
+<div class="sidebar-dco">
+	<div da-spinner ng-show="loading"></div>
+
+	<h4 ng-if="userDCO.length && !project && !createMode">Your DCO projects</h4>
+
+	<div ng-if="!createMode && !editMode">
+		<p class="dco-list-empty"
+		   ng-if="!userDCO.length">You don't have any DCO projects.</p>
+		<ul class="dco-list"
+		    ng-if="!project && userDCO.length">
+			<li ng-repeat="dco in userDCO track by $index">
+				<a href
+				   ng-click="selectProject(dco)">{{dco.display_name}}</a>
+			</li>
+		</ul>
+		<a href class="button five centered columns"
+		   ng-if="!project"
+		   ng-click="createProject()">Create a new one</a>
+	</div>
+
+	<div da-sidebar-dco-view
+	     ng-if="project && !editMode"></div>
+	<div da-sidebar-dco-manage
+	     ng-if="editMode || createMode"></div>
+</div>

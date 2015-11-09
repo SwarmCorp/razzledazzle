@@ -1,0 +1,26 @@
+@import 'variables'
+@import 'mixins'
+
+.main-header
+	padding: 30px 0 20px
+	position: relative
+	background: $whiteColor
+	z-index: 2
+	.inverted &
+		background: $blackColor
+	+clearfix
+	a
+		color: $grayColor
+		font-size: 1.8em
+		line-height: 2em
+		&:hover
+			color: $blackColor
+		&.link-apply
+			margin-left: 15px
+	.icon
+		font-size: 1.1em
+		margin-left: 10px
+		&.swarm-logo
+			color: $blackColor
+			font-size: 3.3em
+			line-height: 1.2em

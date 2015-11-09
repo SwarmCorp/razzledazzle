@@ -1,0 +1,168 @@
+<div class="sidebar-dco-manage">
+	<form name="form.dco" novalidate>
+		<h4>{{editMode ? projectData.project_name : 'New DCO project'}}</h4>
+		<section class="sidebar-dco-section-nav">
+			<nav class="section-switch">
+				<a href
+				   ng-class="{'active': activeSection == 'basic'}"
+				   ng-click="switchSection('basic')">Basic Info</a>
+				<a href
+				   ng-class="{'active': activeSection == 'public'}"
+				   ng-click="switchSection('public')">Public Info</a>
+			</nav>
+		</section>
+		<section class="project-basic-info nested-form sidebar-cms"
+		         ng-show="activeSection == 'basic'"
+		         ng-form="form.dco.basic">
+			<div class="cms-section">
+				<h5>DCO basic info</h5>
+				<label>
+					Project name
+					<input type="text"
+					       name="projectName"
+					       ng-required="true"
+					       ng-model="projectData.project_name" />
+				</label>
+				<label>
+					Statement of intent
+					<textarea name="projectStatement"
+					          ng-required="true"
+					          ng-model="projectData.project_statement"></textarea>
+				</label>
+				<div class="delegates" for="">
+					<span>Delegates</span>
+					<div ng-repeat="delegate in delegates track by $index"
+					     ng-class="{even: $even, odd: $odd}">
+						<label class="three alpha columns">
+							<input type="text"
+							       placeholder="First Name"
+							       ng-class="{small: $index > 1}"
+							       name="delegate_{{delegate.name}}_firstName"
+							       ng-model="delegate.firstName"
+							       ng-required="true" />
+						</label>
+						<label class="three omega columns">
+							<input type="text"
+							       placeholder="Last Name"
+							       ng-class="{small: $index > 1}"
+							       name="delegate_{{delegate.name}}_lastName"
+							       ng-model="delegate.lastName"
+							       ng-required="true" />
+						</label>
+						<label>
+							<input type="text"
+							       placeholder="Email"
+							       ng-class="{small: $index > 1}"
+							       name="delegate_{{delegate.name}}_email"
+							       ng-pattern="/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$/i"
+							       ng-model="delegate.email"
+							       ng-required="true" />
+						</label>
+						<a href
+						   class="remove-delegate"
+						   ng-if="$index > 0"
+						   ng-click="removeDelegate($index)"><i class="icon icon-close"></i></a>
+					</div>
+					<a href class="add-delegate five centered columns blue button" ng-click="addDelegate()">Add delegate</a>
+				</div>
+				<label>
+					Delegate responsibilities
+					<textarea name="delegateResponsibilities"
+					          ng-required="true"
+					          ng-model="projectData.project_delegate_responsibilities"></textarea>
+				</label>
+				<label>
+					Link to DCO contract
+					<input type="text"
+					       name="projectContract"
+					       ng-required="true"
+					       ng-model="projectData.project_contract" />
+				</label>
+				<label>
+					Link to budget
+					<input type="text"
+					       name="projectBudget"
+					       ng-model="projectData.project_budget" />
+				</label>
+			</div>
+		</section>
+		<section class="project-public-info nested-form sidebar-cms"
+		         ng-show="activeSection == 'public'"
+		         ng-form="form.dco.public">
+			<div class="cms-section">
+				<h5>Main project info</h5>
+				<label>
+					Project title
+					<input type="text"
+					       name="projectTitle"
+					       ng-required="true"
+					       ng-model="projectData.project_title" />
+				</label>
+				<label>
+					Project description
+					<input type="text"
+					       name="projectDescription"
+					       ng-required="true"
+					       ng-model="projectData.project_description" />
+				</label>
+				<label class="project-logo">
+					<div class="project-logo-holder" ng-if="projectData.project_logo">
+						<img ng-src="{{projectData.project_logo}}/convert?w=108&h=108&fit=crop&quality=100" alt="" />
+					</div>
+					<div filepicker
+					     path="/projectsFiles/"
+					     pickerclass="blue button"
+					     container="swarm.shandro"
+					     callback="updateLogo(file)"
+					     mimetype="'image/*'"
+					     multiple=false>Upload project logo</div>
+					Picture will be resized to 108x108px
+				</label>
+				<label class="project-banner">
+					<img ng-if="projectData.project_cover"
+					     ng-src="{{projectData.project_cover}}/convert?w=280&fit=scale&quality=100" alt="" />
+					<div filepicker
+					     path="/projectsFiles/"
+					     pickerclass="blue button"
+					     container="swarm.shandro"
+					     callback="updateCover(file)"
+					     mimetype="'image/*'"
+					     multiple=false>Upload project cover</div>
+					Picture will be resized to 3840x992px
+				</label>
+			</div>
+			<div da-dco-description></div>
+			<div da-dco-faq></div>
+			<div da-dco-company></div>
+			<div class="project-join-url">
+				<label>
+					Project 'Join' URL
+					<input type="url"
+					       name="projectJoinUrl"
+					       ng-model="projectData.project_join_url" />
+				</label>
+			</div>
+		</section>
+		<div class="actions">
+			<div class="dco-publish-switch"
+			     ng-class="{'switch-disabled': !publicInfoFormValid || !basicInfoFormValid}">
+				<div da-switch
+				     state="projectData.project_published"
+				     label="'Publish project'"
+				     trigger="publicInfoFormValid ? switchPublishedState : null"></div>
+				<p ng-if="publicInfoFormValid === false || basicInfoFormValid === false">
+					<span ng-if="!basicInfoFormValid"
+					      ng-click="switchSection('basic')">Please fill-in correctly 'Basic Info' form.</span>
+					<span ng-if="!basicInfoFormValid"
+					      ng-click="switchSection('public')">Please fill-in correctly 'Public Info' form.</span>
+				</p>
+			</div>
+			<input type="submit"
+			       class="five centered columns"
+			       value="{{editMode ? 'Save' : 'Create project'}}"
+			       ng-click="editMode ? saveProject() : createProject()">
+			<a href
+			   ng-click="editMode ? cancelProjectEdit() : cancelProjectCreation()">Cancel</a>
+		</div>
+	</form>
+</div>

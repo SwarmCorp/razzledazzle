@@ -1,0 +1,128 @@
+<div class="sidebar-content sidebar-cms">
+	<div da-spinner ng-show="loading"></div>
+	<form name="form.cms"
+	      ng-submit="formSubmit()"
+	      novalidate>
+		<div da-spinner ng-show="loading"></div>
+		<h4>Project basic info</h4>
+		<div class="project-basic-info"
+		     ng-form="form.cms.projectBasics"
+		     ng-class="{'form-submitted': form.cms.projectBasics.$submitted}">
+			<label>
+				Project name
+				<input type="text"
+				       name="projectName"
+				       ng-required="true"
+				       ng-model="projectData.project_name" />
+			</label>
+			<label>
+				Project title
+				<input type="text"
+				       name="projectTitle"
+				       ng-required="true"
+				       ng-model="projectData.project_title" />
+			</label>
+			<label>
+				Project description
+				<input type="text"
+				       name="projectDescription"
+				       ng-required="true"
+				       ng-model="projectData.project_description" />
+			</label>
+			<label class="project-logo">
+				<div class="project-logo-holder" ng-if="projectData.project_logo">
+					<img ng-src="{{projectData.project_logo}}/convert?w=108&h=108&fit=crop&quality=100" alt="" />
+				</div>
+				<div filepicker
+				     path="/projectsFiles/"
+				     pickerclass="blue button"
+				     container="swarm.shandro"
+				     callback="updateLogo(file)"
+				     mimetype="'image/*'"
+				     multiple=false>Upload project logo</div>
+				Picture will be resized to 108x108px
+			</label>
+			<label class="project-banner">
+				<img ng-if="projectData.project_cover"
+				     ng-src="{{projectData.project_cover}}/convert?w=280&fit=scale&quality=100" alt="" />
+				<div filepicker
+				     path="/projectsFiles/"
+				     pickerclass="blue button"
+				     container="swarm.shandro"
+				     callback="updateCover(file)"
+				     mimetype="'image/*'"
+				     multiple=false>Upload project cover</div>
+				Picture will be resized to 3840x992px
+			</label>
+			<label>
+				Coin name
+				<input type="text"
+				       name="projectCoin"
+				       ng-required="true"
+				       ng-model="projectData.project_coin" />
+			</label>
+			<label>
+				Initial coin price (in BTC)
+				<input type="text"
+				       name="projectCoinPrice"
+				       ng-required="true"
+				       ng-model="projectData.project_initial_coin_price" />
+			</label>
+			<label>
+				BTC Goal
+				<input type="text"
+				       name="projectGoal"
+				       ng-required="true"
+				       ng-model="projectData.project_goal" />
+			</label>
+			<label>
+				Sale start date
+				<input datepicker-popup
+				       type="text"
+				       name="saleStartDate"
+				       ng-class="{'invalid': $invalid && $touched}"
+				       ng-required="true"
+				       ng-model="projectData.sale_dates.mainsale_start_date"
+				       ng-focus="mainsaleStartDateDatePicker = true"
+				       is-open="mainsaleStartDateDatePicker"
+				       min-date="today"
+				       max-date="projectData.sale_dates.mainsale_end_date" />
+			</label>
+			<label>
+				Sale end date
+				<input datepicker-popup
+				       type="text"
+				       name="saleEndDate"
+				       ng-class="{'invalid': $invalid && $touched}"
+				       ng-required="true"
+				       ng-model="projectData.sale_dates.mainsale_end_date"
+				       ng-focus="mainsaleEndDateDatePicker = true"
+				       is-open="mainsaleEndDateDatePicker"
+				       min-date="projectData.sale_dates.mainsale_start_date" />
+			</label>
+			<label>
+				Bank account details
+				<textarea name="projectBankAccount"
+				          ng-required="true"
+				          ng-model="projectData.payment_bank"></textarea>
+			</label>
+			<label>
+				Receiving BTC address
+				<input type="text"
+				       name="projectReceivingAddress"
+				       ng-disabled="true"
+				       ng-model="projectData.payment_address.public" />
+			</label>
+			<label>
+				Vending machine address
+				<input type="text"
+				       name="projectVendingAddress"
+				       ng-disabled="true"
+				       ng-model="projectData.vending_address.public" />
+			</label>
+			<input type="submit"
+			       value="Create project"
+			       ng-click="createProject()">
+		</div>
+	</form>
+</div>

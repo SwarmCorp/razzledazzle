@@ -1,6 +1,6 @@
 {
-  "firebase": "razzledazzle",
-  "public": "./public",
+  "firebase": "dazzle-dev",
+  "public": "static",
   "ignore": [
     "firebase.json",
     "**/.*",

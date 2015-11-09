@@ -1,0 +1,130 @@
+@import 'variables'
+@import 'mixins'
+
+.sidebar-voting
+	label
+		text-indent: 0
+		span
+			display: block
+			font-family: $HelveticaNeueRoman
+			&.error
+				line-height: 1.2em
+				text-align: center
+				padding-top: 0
+				margin: 0 0 20px
+		input
+			margin-bottom: 10px
+	.passphrase-pitch
+		text-align: center
+	.back-to-votes
+		position: absolute
+		color: $linkGreenColor
+		font-size: 1.3em
+		line-height: 1.2em
+		top: 75px
+	h5
+		font-family: $HelveticaNeueMedium
+		font-size: 1.5em
+		line-height: 1.2em
+		color: $blackColor
+		margin-bottom: 13px
+	p
+		font-size: 1.5em
+		line-height: 1.2em
+	.voting-item
+		position: relative
+		padding-bottom: 30px
+		margin-bottom: 30px
+		&:after
+			content: ""
+			display: block
+			position: absolute
+			bottom: 0
+			left: 50%
+			margin-left: -107px
+			width: 215px
+			height: 1px
+			background: url(image-url('splash/gray-horizontal-dotted-line.png', true, false)) repeat-x 0 0 transparent
+			+image-2x(image-url('splash/gray-horizontal-dotted-line@2x.png', true, false), 4px, 1px)
+		&.last:after
+			display: none
+		.button
+			display: inline-block
+			margin-bottom: 10px
+			width: 110px
+		.voting-ends
+			display: block
+			font-family: $HelveticaNeueIt
+			font-size: 1.3em
+			color: $lightGrayColor
+	.voting
+		ul, li.last
+			margin-bottom: 0
+		> p
+			margin-bottom: 60px
+	p.no-vote
+		margin-bottom: 30px
+	.option
+		padding-bottom: 30px
+		margin-bottom: 30px
+		&.no-vote
+			padding-bottom: 20px
+			margin-bottom: 20px
+			h5
+				margin-bottom: 0
+		h5
+			font-family: $HelveticaNeueLt
+			color: $blackColor
+			.option-votes
+				display: inline
+				float: none
+				font-family: $HelveticaNeueBold
+				font-size: 1.2em
+				line-height: 1em
+				padding-left: 5px
+				color: $linkGreenColor
+		.button
+			display: block
+			float: left
+			cursor: default
+			&.voting-done:hover
+				box-shadow: none
+				&.gray
+					color: darken($grayButtonBackgroundColor, 20%)
+					background: $grayButtonBackgroundColor
+					border-color: darken($grayButtonBackgroundColor, 10%)
+				&.blue
+					color: $whiteColor
+					background: $blueButtonBackgroundColor
+					border-color: darken($blueButtonBackgroundColor, 10%)
+			&.cant-vote
+				display: block
+				float: none
+				width: auto
+				&:hover
+					box-shadow: none
+		.option-votes
+			display: block
+			float: left
+			font-family: $HelveticaNeueBold
+			font-size: 1.4em
+			line-height: 1em
+			padding: 13px 0 10px 12px
+			&.tiny
+				font-family: $HelveticaNeueRoman
+		.option-address
+			clear: both
+			display: block
+			color: $linkGreenColor
+			font-size: 1.2em
+			line-height: 1.2em
+			cursor: pointer
+
+	.cant-vote
+		line-height: 1.2em
+		display: block
+		float: none
+		width: auto
+		margin-bottom: 40px
+		&:hover
+			box-shadow: none

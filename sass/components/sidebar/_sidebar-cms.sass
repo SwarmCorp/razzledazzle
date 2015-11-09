@@ -1,0 +1,223 @@
+@import 'variables'
+@import 'mixins'
+
+.sidebar-cms
+	.cms-section
+		padding-bottom: 50px
+		position: relative
+		&:after
+			content: ""
+			width: 70%
+			height: 0
+			position: absolute
+			bottom: 0
+			left: 50%
+			margin-left: -35%
+			border-bottom: 1px solid $lightGrayColor
+		h5
+			font-family: $HelveticaNeueLt
+			font-size: 2.2em
+			line-height: 1.2em
+			padding: 20px 0
+			margin-bottom: 30px
+			text-align: center
+			position: relative
+			&:after
+				content: ""
+				width: 70%
+				height: 0
+				position: absolute
+				bottom: 0
+				left: 50%
+				margin-left: -35%
+				border-bottom: 1px solid $grayColor
+	.project-basic-info
+		position: relative
+		.project-logo,
+		.project-banner
+			text-align: center
+			.button
+				display: block
+				margin-bottom: 5px
+				span
+					color: $whiteColor
+		.project-logo
+			margin-bottom: 15px
+			.project-logo-holder
+				position: relative
+				display: block
+				margin: 0 auto 10px
+				width: 108px
+				height: 108px
+				border-radius: 54px
+				overflow: hidden
+				border: 1px solid rgba($blackColor,.1)
+				img
+					position: absolute
+					top: 0
+					left: 0
+		.project-banner
+			min-height: 0
+			margin-bottom: 15px
+			img
+				display: block
+				margin-bottom: 10px
+		.field-last
+			input
+				margin-bottom: 0
+	.cms-sale-phases
+		> .button, .edit-save, .edit-cancel, input[type="submit"]
+			display: block
+			margin-bottom: 10px
+		.filled-sale-phases
+			li
+				font-size: 1.5em
+				line-height: 1.2em
+				background: $lightGrayColor
+				border-radius: 3px
+				padding: 7px 15px
+				+clearfix()
+				span
+					max-width: 150px
+					text-overflow: ellipsis
+					overflow: hidden
+					float: left
+					&.phase-dates
+						font-size: .8em
+						display: block
+						clear: left
+				a
+					margin-left: 10px
+					float: left
+					color: $linkGreenColor
+					&:hover
+						color: $linkHoverColor
+	.cms-product-description
+		.new-paragraph-actions
+			text-align: center
+			.button
+				margin-bottom: 0
+			.button + .button
+				margin-left: 11px
+		.new-paragraph
+			label span
+				font-family: $HelveticaNeueLt
+				display: block
+				font-size: .8em
+				line-height: 1.2em
+				margin-bottom: 20px
+				text-align: center
+				b
+					white-space: nowrap
+			.edit-cancel
+				text-align: center
+				font-family: $HelveticaNeueLt
+				font-size: 1.4em
+				line-height: 1em
+				display: block
+				width: 50px
+				margin: 0 auto 10px
+		.project-description
+			.project-description-paragraph
+				position: relative
+				.paragraph-delete,
+				.paragraph-edit
+					font-size: 1.2em
+					line-height: 1.2em
+					position: absolute
+					top: 45px
+					right: 10px
+					&:after
+						content: $icon-trash
+						font-family: $SwarmIcon
+				.paragraph-edit
+					top: 20px
+					&:after
+						content: $icon-pencil
+						font-family: $SwarmIcon
+			.project-description-content
+				border: 1px solid $lightGrayColor
+				border-radius: 3px
+				padding: 15px 30px 15px 15px
+				text-align: center
+				&.content-text
+					text-align: left
+					padding-bottom: 0
+					min-height: 60px
+					p
+						margin-bottom: 15px
+						line-height: 1.2em
+				&.edit-mode
+					.video-link-edit
+						font-size: 1.6em
+						line-height: 1.2em
+						input
+							margin: 7px 0 10px
+						span
+							display: block
+							font-size: .8em
+							line-height: 1.2em
+							margin-bottom: 20px
+							b
+								white-space: nowrap
+					.button
+						margin-bottom: 10px
+					.edit-cancel
+						font-family: $HelveticaNeueLt
+						font-size: 1.4em
+						line-height: 1em
+						margin: 0 auto 10px
+						display: block
+						width: 60px
+						text-align: center
+					+ .paragraph-delete
+						top: 20px
+				img
+					max-width: 100%
+	.cms-product-faq
+		.filled-faq
+			background: $lightGrayColor
+			border-radius: 3px
+			padding: 15px 30px 15px 15px
+			position: relative
+			p
+				line-height: 1.2em
+			.faq-question
+				font-family: $HelveticaNeueRoman
+				font-size: 1.6em
+				margin-bottom: 10px
+			.faq-answer
+				font-family: $HelveticaNeueLt
+				font-size: 1.5em
+				margin-bottom: 0
+			.faq-delete,
+			.faq-edit
+				font-size: 1.2em
+				line-height: 1.2em
+				position: absolute
+				top: 45px
+				right: 10px
+				&:after
+					content: $icon-trash
+					font-family: $SwarmIcon
+			.faq-edit
+				top: 20px
+				&:after
+					content: $icon-pencil
+					font-family: $SwarmIcon
+		> .button
+			display: block
+			margin-bottom: 0
+	.project-join-url
+		padding: 30px 0 20px
+		margin-bottom: 50px
+		position: relative
+		&:after
+			content: ""
+			width: 70%
+			height: 0
+			position: absolute
+			bottom: 0
+			left: 50%
+			margin-left: -35%
+			border-bottom: 1px solid $lightGrayColor

@@ -1,0 +1,25 @@
+@import 'variables'
+@import 'mixins'
+
+.main-footer
+	padding: 52px 0
+	font-size: 1.6em
+	line-height: 2.125em
+	font-family: $HelveticaNeueLt
+	background: url(image-url('divider.jpg', true, false)) repeat-x top left $whiteColor
+	+image-2x(image-url('divider@2x.jpg', true, false), 4px, 1px)
+	position: absolute
+	bottom: 0
+	left: 0
+	width: 100%
+	.swarm-logo
+		font-size: 1.8em
+		line-height: 1.2em
+		color: $grayColor
+		&:hover
+			color: $blackColor
+	.footer-nav
+		a
+			font-family: $HelveticaNeueLt
+			color: $grayColor
+			margin-left: 40px

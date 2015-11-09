@@ -1,0 +1,122 @@
+@import 'variables'
+@import 'mixins'
+
+.button, .button:visited, button, input[type="submit"], input[type="reset"], input[type="button"]
+	font-size: 15px
+	line-height: 1em
+	font-family: $HelveticaNeueRoman
+	display: inline-block
+	text-align: center
+	text-decoration: none
+	cursor: pointer
+	margin-bottom: 20px
+	padding: 11px 10px 10px
+	overflow: hidden
+	box-sizing: border-box
+	border-radius: 3px
+	transition: background .4s, color .4s, box-shadow .4s, text-shadow .4s
+	b
+		font-family: $HelveticaNeueMedium
+	$greenButtonTextShadowHover: 0 0 2px $greenButtonTextShadowHoverColor
+	$greenButtonBoxShadowHover: inset 0 0 5px $greenButtonBoxShadowHoverColor
+	+button($greenButtonColor, $greenButtonHoverColor, $greenButtonBackgroundColor, $greenButtonHoverBackgroundColor, $greenButtonBorderColor, null, $greenButtonTextShadowHover, null, $greenButtonBoxShadowHover)
+	&:disabled, &.disabled
+		color: rgba($blackColor,.4)
+		background: $lightGrayColor
+		border-color: $lightGrayColor
+		cursor: default
+	&:active, &:hover
+		&:disabled, &.disabled
+			color: rgba($blackColor,.4)
+			background: $lightGrayColor
+			border-color: $lightGrayColor
+			box-shadow: none
+			text-shadow: none
+	&.gray
+		$grayButtonTextShadowHover: 0 0 1px $grayButtonTextShadowHoverColor
+		$grayButtonBoxShadowHover: inset 0 0 5px $grayButtonBoxShadowHoverColor
+		+button($grayButtonColor, $grayButtonHoverColor, $grayButtonBackgroundColor, $grayButtonHoverBackgroundColor, $grayButtonBorderColor, null, $grayButtonTextShadowHover, null, $grayButtonBoxShadowHover)
+	&.dark-gray
+		color: rgba($whiteColor,.85)
+		background: $darkGrayButtonBackgroundColor
+		border-color: darken($darkGrayButtonBackgroundColor, 10%)
+		&:hover
+			color: rgba($whiteColor,.85)
+			background: $darkGrayButtonHoverBackgroundColor
+			box-shadow: none
+			text-shadow: 0 0 2px darken($darkGrayButtonHoverBackgroundColor, 30%)
+	&.yellow
+		color: $yellowButtonColor
+		background: $yellowButtonBackgroundColor
+		border-color: darken($yellowButtonBackgroundColor, 10%)
+		&:hover
+			color: $yellowButtonHoverColor
+			background: $yellowButtonHoverBackgroundColor
+			box-shadow: none
+			text-shadow: 0 0 2px darken($yellowButtonHoverBackgroundColor, 30%)
+	&.blue
+		$blueButtonTextShadowHover: 0 0 2px $blueButtonTextShadowHoverColor
+		$blueButtonBoxShadowHover: inset 0 0 5px $blueButtonBoxShadowHoverColor
+		+button($blueButtonColor, $blueButtonHoverColor, $blueButtonBackgroundColor, $blueButtonHoverBackgroundColor, $blueButtonBorderColor, null, $blueButtonTextShadowHover, null, $blueButtonBoxShadowHover)
+	&.red
+		color: $whiteColor
+		background: $redButtonBackgroundColor
+		border-color: darken($redButtonBackgroundColor, 10%)
+		&:hover
+			color: $whiteColor
+			background: $redButtonHoverBackgroundColor
+			box-shadow: inset 0 0 5px darken($redButtonHoverBackgroundColor, 10%)
+			text-shadow: 0 0 2px darken($redButtonHoverBackgroundColor, 30%)
+	&.filter
+		font-family: $HelveticaNeueRoman
+		color: $grayColor
+		background: $filterButtonBackgroundColor
+		border-color: darken($filterButtonBackgroundColor, 10%)
+		border-radius: 2px
+		min-width: 133px
+		text-shadow: none
+		&:hover
+			background: $filterButtonHoverBackgroundColor
+			box-shadow: inset 0 0 5px darken($filterButtonHoverBackgroundColor, 10%)
+			text-shadow: none
+		&.active
+			background: $whiteColor
+			color: $blackColor
+			box-shadow: inset 0 0 5px $filterButtonBackgroundColor
+	&.facebook
+		$fbColor: #405d9b
+		color: $whiteColor
+		background: $fbColor
+		border-color: darken($fbColor, 10%)
+		&:hover
+			color: $whiteColor
+			background: darken($fbColor, 10%)
+			box-shadow: inset 0 0 5px darken($fbColor, 10%)
+			text-shadow: 0 0 2px darken($fbColor, 30%)
+	&.twitter
+		$twColor: #55acee
+		color: $whiteColor
+		background: $twColor
+		border-color: darken($twColor, 10%)
+		&:hover
+			color: $whiteColor
+			background: darken($twColor, 10%)
+			box-shadow: inset 0 0 5px darken($twColor, 10%)
+			text-shadow: 0 0 2px darken($twColor, 30%)
+	&.youtube
+		$ytColor: #df2826
+		color: $whiteColor
+		background: $ytColor
+		border-color: darken($ytColor, 10%)
+		&:hover
+			color: $whiteColor
+			background: darken($ytColor, 10%)
+			box-shadow: inset 0 0 5px darken($ytColor, 10%)
+			text-shadow: 0 0 2px darken($ytColor, 30%)
+	&::-moz-focus-inner
+		border: 0
+		padding: 0
+	span
+		font-size: inherit
+		font-family: inherit
+		color: inherit

@@ -1,0 +1,180 @@
+@import 'variables'
+@import 'mixins'
+
+.sidebar-voting-admin
+	h4.voting
+		margin-bottom: 3px
+		+ .address
+			display: block
+			margin-bottom: 63px
+			font-size: 1.2em
+			line-height: 1.2em
+	.back-to-votes
+		position: absolute
+		color: $linkGreenColor
+		font-size: 1.3em
+		line-height: 1.2em
+		top: 75px
+	h5
+		font-family: $HelveticaNeueMedium
+		font-size: 1.5em
+		line-height: 1.2em
+		color: $blackColor
+		margin-bottom: 13px
+	p
+		font-size: 1.5em
+		line-height: 1.2em
+	ul
+		margin-bottom: 0
+	.voting-item
+		position: relative
+		padding-bottom: 30px
+		margin-bottom: 30px
+		&:after
+			content: ""
+			display: block
+			position: absolute
+			bottom: 0
+			left: 50%
+			margin-left: -107px
+			width: 215px
+			height: 1px
+			background: url(image-url('splash/gray-horizontal-dotted-line.png', true, false)) repeat-x 0 0 transparent
+			+image-2x(image-url('splash/gray-horizontal-dotted-line@2x.png', true, false), 4px, 1px)
+		&.last
+			margin-bottom: 0
+			&:after
+				display: none
+		.button
+			display: inline-block
+			margin-bottom: 10px
+			width: 110px
+	.voting
+		> p
+			margin-bottom: 30px
+	.option
+		padding-bottom: 30px
+		margin-bottom: 30px
+		h5
+			font-family: $HelveticaNeueLt
+			color: $blackColor
+			margin-bottom: 5px
+		.option-votes
+			font-family: $HelveticaNeueBold
+			font-size: 1.2em
+			line-height: 1em
+			padding-left: 5px
+			color: $linkGreenColor
+		.option-address
+			clear: both
+			display: block
+			font-size: 1.2em
+			line-height: 1.2em
+	.add-voting,
+	.cancel-adding-voting
+		display: block
+	label
+		text-indent: 0
+		position: relative
+		&.two-lines
+			span
+				line-height: 1.2em
+				position: relative
+				top: 8px
+		&.invitees
+			padding-top: 8px
+			span
+				padding-top: 8px
+				vertical-align: top
+		&.options
+			input
+				width: 184px
+				&.small
+					width: 158px
+			.option-remove
+				display: inline-block
+				padding: 0 5px
+				.icon
+					color: $redColor
+					font-size: .8em
+					line-height: 2em
+					&:hover
+						color: darken($redColor, 10%)
+		span
+			display: inline-block
+			font-family: $HelveticaNeueRoman
+			width: 91px
+			&.error,
+			&.field-label
+				width: auto
+				padding-top: 0
+				margin: 0 0 10px 110px
+			&.error a
+				color: inherit
+		input,
+		textarea
+			width: 184px
+			margin-bottom: 10px
+			&:disabled
+				border-color: transparent
+				background: transparent
+		textarea
+			margin-left: 5px
+			height: 100px
+			resize: none
+	.options-trigger
+		margin-bottom: 20px
+		display: block
+		color: $whiteColor
+		&:hover
+			color: $whiteColor
+	.voting-invitees
+		margin-bottom: 20px
+		li
+			font-size: 1.5em
+			line-height: 1.2em
+			margin-bottom: 0
+			a
+				line-height: 2em
+				position: relative
+				&:after
+					content: $icon-voting
+					font-family: $SwarmIcon
+					color: $lightGrayColor
+					font-size: 1.2em
+					margin-left: 10px
+				&.signed:after
+					color: $yellowColor
+				&.voted:after
+					color: $greenColor
+	.add-option
+		display: block
+		text-align: center
+		font-size: 1.2em
+		line-height: 1.2em
+		padding-left: 91px
+		a
+			color: $linkGreenColor
+	.voting-price
+		padding: 10px 0
+		font-family: $HelveticaNeueLt
+		b
+			font-family: $HelveticaNeueRoman
+	.waiting-for-payment
+		display: block
+		color: $whiteColor
+		.icon
+			margin-left: 15px
+			animation: spinner 2s linear infinite
+		&:hover
+			cursor: default
+			box-shadow: none
+			border: 1px solid darken($greenButtonBackgroundColor, 10%)
+			background: $greenButtonBackgroundColor
+			color: darken($greenButtonBackgroundColor, 20%)
+	.cancel-adding-voting
+		text-align: center
+		font-size: 1.2em
+		line-height: 1.2em
+		a
+			color: $linkGreenColor

@@ -1,0 +1,56 @@
+@import 'variables'
+@import 'mixins'
+
+.modal
+	.signup-form-popup
+		padding: 67px 0 54px
+		z-index: 1
+		.modal &
+			background: $whiteColor
+		h4
+			text-align: center
+			color: $blackColor
+			font-size: 2em
+			line-height: 1.2em
+			margin-bottom: 20px
+		.signup-form
+			float: none
+			display: block
+			margin-bottom: 0
+			label
+				text-indent: 0
+				.error-placeholder
+					display: block
+					font-family: $HelveticaNeueLt
+					font-size: 1em
+					padding-bottom: 5px
+				span.error
+					padding-top: 0
+					padding-bottom: 5px
+			input
+				margin: 0 0 10px
+				&[type="password"]
+					margin-bottom: 25px
+				&[type="submit"]
+					margin-bottom: 10px
+					+ a
+						text-align: center
+						margin-bottom: 0
+			p
+				font-size: 1.4em
+				line-height: 1.2em
+			.divider
+				display: block
+				text-align: center
+				text-transform: uppercase
+				font-size: 1.5em
+				margin-bottom: 25px
+				background: url(image-url('divider.jpg', true, false)) repeat-x center left transparent
+				+image-2x(image-url('divider@2x.jpg', true, false), 4px, 1px)
+				b
+					font-family: $HelveticaNeueUltraLt
+					background: $whiteColor
+					padding: 0 15px
+				+ .button
+					display: block
+					margin-bottom: 0

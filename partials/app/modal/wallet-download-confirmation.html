@@ -1,0 +1,17 @@
+<div class="wallet-confirmation container">
+	<div da-spinner ng-show="loading"></div>
+	<h1>Confirm!</h1>
+	<div class="six centered columns">
+		<p>
+			I confirm that I’ve saved my paper wallet somewhere very safe and that I will be able to access it again.
+			I also confirm I realize that if I ever lose this paper wallet I will completely lose access to all my Bits.
+			I also confirm that if I let anyone else have this paper wallet I may lose access to all my Bits.
+		</p>
+		<a class="simple green button"
+		   ng-click="walletDownloadConfirm()">
+			I saved my paper wallet
+		</a>
+		<a href
+		   ng-click="getPaperWallet()">Download again</a>
+	</div>
+</div>

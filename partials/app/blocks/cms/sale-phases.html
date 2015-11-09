@@ -1,0 +1,93 @@
+<div class="cms-sale-phases cms-section">
+	<h3>Sales phases</h3>
+	<ul class="filled-sale-phases"
+	    ng-if="phasesOnline"
+	    ng-hide="saleNotFilledIn">
+		<li ng-repeat="salePhase in phasesOnline track by $index"
+		    ng-hide="salePhase.type == 'initial'">
+			<span>{{salePhase.name}}</span>
+			<a href ng-click="editSalePhase($index)">Edit</a>
+			<a href ng-click="deleteSalePhase($index)">Delete</a>
+			<span class="phase-dates">{{phaseDates(salePhase)}}</span>
+		</li>
+	</ul>
+	<div ng-form="form.salePhases_{{$index}}"
+	     ng-if="!salePhase.filledIn"
+	     ng-class="{'form-submitted': form.salePhases_{{$index}}.$submitted}"
+	     ng-repeat="salePhase in salePhases track by $index">
+		<label>
+			Phase name
+			<input type="text"
+			       name="phaseName_{{salePhase.name}}"
+			       ng-class="{'invalid': $invalid && $touched}"
+			       ng-required="true"
+			       ng-model="salePhase.phaseName" />
+		</label>
+		<!--<label class="two alpha columns">-->
+		<label>
+			Start date
+			<input datepicker-popup
+			       type="text"
+			       name="startDate_{{salePhase.name}}"
+			       ng-class="{'invalid': $invalid && $touched}"
+			       ng-required="true"
+			       ng-model="salePhase.startDate"
+			       ng-focus="salePhaseStartDateDatePicker = true"
+			       is-open="salePhaseStartDateDatePicker"
+			       min-date="editModeSaleStartDate || today" />
+		</label>
+		<!--<label for="" class="three omega columns">-->
+			<!--Start time-->
+			<!--<div timepicker-->
+			     <!--name="startTime_{{salePhase.startTime}}"-->
+			     <!--ng-class="{'invalid': $invalid && $touched}"-->
+			     <!--ng-model="salePhase.startTime"></div>-->
+		<!--</label>-->
+		<!--<label class="two alpha columns">-->
+		<label>
+			End date
+			<input datepicker-popup
+			       type="text"
+			       name="endDate_{{salePhase.name}}"
+			       ng-class="{'invalid': $invalid && $touched}"
+			       ng-required="true"
+			       ng-model="salePhase.endDate"
+			       ng-focus="salePhaseEndDateDatePicker = true"
+			       is-open="salePhaseEndDateDatePicker"
+			       min-date="salePhase.startDate" />
+		</label>
+		<!--<label for="" class="three omega columns">-->
+			<!--End time-->
+			<!--<div timepicker-->
+			     <!--name="endTime_{{salePhase.name}}"-->
+			     <!--ng-class="{'invalid': $invalid && $touched}"-->
+			     <!--ng-model="salePhase.endTime"></div>-->
+		<!--</label>-->
+		<label class="two alpha columns">
+			Start price
+			<input type="text"
+			       name="startPrice_{{salePhase.name}}"
+			       ng-class="{'invalid': $invalid && $touched}"
+			       ng-required="true"
+			       ng-model="salePhase.startPrice" />
+		</label>
+		<label class="three omega columns">
+			End price
+			<input type="text"
+			       name="endPrice_{{salePhase.name}}"
+			       ng-class="{'invalid': $invalid && $touched}"
+			       ng-required="true"
+			       ng-model="salePhase.endPrice" />
+		</label>
+		<a href
+		   class="edit-save button"
+		   ng-click="saveSalePhase(salePhase, $index)">Save</a>
+		<a href
+		   class="edit-cancel red button"
+		   ng-click="cancelSalePhaseEdit($index)">Cancel</a>
+	</div>
+	<a href
+	   class="gray button"
+	   ng-if="!saleNotFilledIn"
+	   ng-click="addSalePhase()">Add sale phase</a>
+</div>

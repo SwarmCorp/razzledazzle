@@ -1,0 +1,58 @@
+@import 'variables'
+@import 'mixins'
+
+.sidebar-user
+	label
+		text-indent: 0
+		&.label-wide
+			span
+				width: 111px
+			input
+				width: 164px
+		&.two-lines
+			span
+				line-height: 1.2em
+				position: relative
+				top: 10px
+		&.last-field
+			margin-bottom: 58px
+		span
+			display: inline-block
+			font-family: $HelveticaNeueRoman
+			width: 91px
+			&.error
+				width: auto
+				padding-top: 0
+				margin: 0 0 10px 110px
+		input
+			width: 184px
+			margin-bottom: 10px
+			&:disabled
+				border-color: transparent
+				background: transparent
+		+ a
+			display: inline-block
+			font-size: 1.5em
+			line-height: 1.2em
+			margin: 0 0 40px 110px
+		&.address
+			margin-bottom: 20px
+			+clearfix
+			input
+				text-overflow: ellipsis
+	p
+		font-size: 1.5em
+		line-height: 1.2em
+		&.wallet-download
+			text-align: center
+			a
+				color: $greenButtonBackgroundColor
+				&:hover
+					color: $greenButtonHoverBackgroundColor
+	input[type="submit"] + a
+		display: block
+		font-size: 1.5em
+		line-height: 1.2em
+		margin: 0 auto
+		width: 100px
+		text-align: center

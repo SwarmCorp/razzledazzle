@@ -1,0 +1,55 @@
+@import 'mixins'
+
++animation-keyframes(splash-horizontal-stripe)
+	0%
+		opacity: 0
+	30%
+		opacity: 1
+	60%, 99%
+		opacity: 1
+		width: 100%
+	100%
+		opacity: 0
+		width: 100%
+
++animation-keyframes(splash-vertical-stripe)
+	0%
+		opacity: 0
+	30%, 90%
+		opacity: 1
+	60%, 99%
+		opacity: 1
+		height: 100%
+	100%
+		opacity: 0
+		height: 100%
+
++animation-keyframes(splash-logo)
+	0%, 20%
+		text-shadow: none
+	60%, 99%
+		text-shadow: 0 0 0 $blackColor
+		color: $whiteColor
+	100%
+		text-shadow: none
+		color: $blackColor
+
++animation-keyframes(spinner)
+	0%
+		transform: rotate(0deg)
+	100%
+		transform: rotate(360deg)
+
++animation-keyframes(splashSlideImage)
+	0%
+		opacity: 0
+	100%
+		opacity: 1
+
++animation-keyframes(splashSlideGreenImage)
+	0%
+		opacity: 0
+	30%, 70%
+		opacity: 1
+	100%
+		opacity: 0

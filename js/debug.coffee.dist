@@ -1,0 +1,2 @@
+window.daDebug =
+	firebase: 'swarmcotest' # dazzle-dev, dazzle-staging, swarmcotest, blinding-fire-1884

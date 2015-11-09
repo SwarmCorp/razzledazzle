@@ -1,0 +1,23 @@
+<header class="main-header"
+        ng-hide="headerHidden()">
+	<div class="container">
+		<a href="/"
+		   ng-if="screenName() !== 'home'"
+		   class="pull-left swarm-logo icon icon-logo"></a>
+		<a href="http://status.swarm.fund/"
+		   ng-if="screenName() == 'home'"
+		   target="_blank"
+		   class="pull-left">Team</a>
+		<a href
+		   class="pull-right"
+		   ng-click="showLoginForm()"
+		   ng-if="!userIsLoggedIn()">Login</a>
+		<a href
+		   class="pull-right"
+		   ng-class="{active: userNavigation}"
+		   ng-click="toggleSidebar()"
+		   ng-if="userIsLoggedIn()">
+			{{user.info.firstName}} {{user.info.lastName}}<i class="icon icon-user"></i>
+		</a>
+	</div>
+</header>

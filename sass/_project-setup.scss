@@ -1,0 +1,18 @@
+$project-path: absolute-path('..');
+$debug-configuration: true;
+$compass-options: (
+	fonts-dir: 'css/fonts',
+	fonts-path: 'dist/css/fonts',
+	http-fonts-dir: 'css/fonts',
+	http-fonts-path: '/css/fonts',
+	generated-images-dir: 'images',
+	http-generated-images-path: '/dist/images',
+	http-images-dir: 'images',
+	http-images-path: '/images',
+	images-dir: 'images',
+	images-path: 'dist/images',
+	relative-assets: 'true'
+);
+
+@import "compass/configuration";
+@include compass-configuration($compass-options, true);

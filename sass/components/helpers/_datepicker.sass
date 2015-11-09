@@ -1,0 +1,79 @@
+@import 'variables'
+@import 'mixins'
+
+.datepicker
+	border: 1px solid $inputBorderColor
+	background: $inputBackgroundColor
+	border-radius: 3px
+	box-shadow: 0 0 2px $lightGrayColor
+	position: absolute
+	width: 100%
+	z-index: 1
+	.datepicker-table
+		border-bottom: 1px solid $inputBorderColor
+		table
+			margin: 8px auto
+			outline: none
+	button
+		display: block
+		width: 100%
+		padding: 5px 10px 3px
+		margin-bottom: 0
+		background: transparent
+		border: 1px solid transparent
+		border-radius: 2px
+		box-shadow: none
+		font-family: $HelveticaNeueRoman
+		color: $textColor
+		&:hover
+			box-shadow: none
+		&.active
+			border: 1px solid darken($greenButtonBackgroundColor, 10%)
+			background: $greenButtonBackgroundColor
+			color: $whiteColor
+		&.disabled
+			color: $lightGrayColor
+			box-shadow: none
+			&.active, &.active:hover
+				background: transparent
+				border: 1px solid $lightGrayColor
+			&:hover
+				color: $lightGrayColor
+				background: transparent
+				border-color: transparent
+				cursor: default
+		&:hover
+			color: $blackColor
+			background: $grayButtonBackgroundColor
+			border-color: darken($grayButtonBackgroundColor, 10%)
+		.icon
+			line-height: .9
+		span
+			display: inline !important
+			width: auto !important
+			position: static !important
+	.row-months
+		button
+			font-family: $HelveticaNeueLt
+			margin-bottom: 5px
+	.row-month
+		button
+			font-size: 1.1em
+			line-height: 1.2em
+			color: $blackColor
+			font-family: $HelveticaNeueLt
+			margin-bottom: 5px
+	.row-week
+		th
+			padding: 5px 0
+			font-size: 1em
+			line-height: 1.2em
+			color: $textColor
+			font-family: $HelveticaNeueLt
+	.buttons-bar
+		padding: 10px 10px 0
+		+clearfix
+		.button
+			margin-bottom: 10px
+			min-width: 100px
+			padding: 6px 10px 5px

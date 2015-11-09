@@ -1,0 +1,50 @@
+@import 'variables'
+@import 'mixins'
+
+.switch
+	+clearfix
+	margin-bottom: 20px
+	.switch-label
+		display: block
+		float: left
+		margin-right: 20px
+		font-family: $HelveticaNeueRoman
+		line-height: 1.2em
+		cursor: default
+	.switch-trigger
+		position: relative
+		display: block
+		width: 50px
+		height: 16px
+		float: left
+		background: $switchOffBackground
+		border: 1px solid $switchOffBorder
+		border-radius: 10px
+		cursor: pointer
+		transition: background .2s, border-color .2s
+		&.on-add.on-add-active,
+		&.off-remove.off-remove-active
+			b
+				background: $switchOnColor
+				left: 32px
+		&.on
+			background: $switchOnBackground
+			border: 1px solid $switchOnBorder
+			b
+				background: $switchOnColor
+				left: 32px
+		&.off
+			background: $switchOffBackground
+			border: 1px solid $switchOffBorder
+			b
+				background: $switchOffColor
+				left: -2px
+		b
+			display: block
+			width: 20px
+			height: 20px
+			background: $switchOffColor
+			border-radius: 10px
+			position: absolute
+			top: -2px
+			transition: left .3s, background .2s

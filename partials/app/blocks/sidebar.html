@@ -1,0 +1,80 @@
+<aside class="main-sidebar container da-animate" ng-show="sidebar.visible">
+	<div class="seven columns">
+		<a href
+		   class="sidebar-trigger icon icon-angle-right"
+		   ng-click="sidebar.hide()"></a>
+		<div da-spinner
+		     class="six columns"
+		     ng-show="loading"></div>
+		<div class="six columns">
+			<div da-sidebar-user
+			     ng-if="section == 'User'"></div>
+			<div da-sidebar-voting
+			     class="sidebar-content"
+			     ng-if="section == 'Voting'"></div>
+			<div da-sidebar-voting-admin
+			     class="sidebar-content"
+			     ng-if="section == 'VotingAdmin'"></div>
+			<div da-sidebar-wallet
+			     class="sidebar-content"
+			     ng-if="section == 'Wallet'"></div>
+			<div da-sidebar-add-project
+			     class="sidebar-content"
+			     ng-if="section == 'AddProject'"></div>
+			<div da-sidebar-cms
+			     class="sidebar-content"
+			     ng-if="section == 'Cms'"></div>
+			<div da-sidebar-dco
+			     class="sidebar-content"
+			     ng-if="section == 'DCO'"></div>
+		</div>
+		<nav class="sidebar-nav one omega column">
+			<a href
+			   class="icon icon-user"
+			   title="User Info"
+			   ng-class="{active: section == 'User'}"
+			   ng-show="sidebar.availableSections().user"
+			   ng-click="switchSection('User')"></a>
+			<a href
+			   class="icon icon-voting-add"
+			   title="Create new vote"
+			   ng-class="{active: section == 'VotingAdmin'}"
+			   ng-show="sidebar.availableSections().voteAdmin"
+			   ng-click="switchSection('VotingAdmin')"></a>
+			<a href
+			   class="icon icon-voting"
+			   title="Vote"
+			   ng-class="{active: section == 'Voting'}"
+			   ng-show="user.info.votings && user.info.wallet && sidebar.availableSections().vote"
+			   ng-click="switchSection('Voting')"></a>
+			<a href
+			   class="icon icon-case"
+			   title="Wallet"
+			   ng-class="{active: section == 'Wallet'}"
+			   ng-show="sidebar.availableSections().wallet"
+			   ng-click="switchSection('Wallet')"></a>
+			<a href
+			   class="icon icon-pencil-add"
+			   title="Add new project"
+			   ng-class="{active: section == 'AddProject'}"
+			   ng-show="sidebar.availableSections().addProject"
+			   ng-click="switchSection('AddProject')"></a>
+			<a href
+			   class="icon icon-pencil"
+			   title="Edit project"
+			   ng-class="{active: section == 'Cms'}"
+			   ng-show="sidebar.availableSections().cms"
+			   ng-click="switchSection('Cms')"></a>
+			<a href
+			   class="icon icon-dco"
+			   title="DCO"
+			   ng-class="{active: section == 'DCO'}"
+			   ng-show="sidebar.availableSections().DCO"
+			   ng-click="switchSection('DCO')"></a>
+			<a href
+			   class="icon icon-quit"
+			   title="Log out"
+			   ng-click="logout()"></a>
+		</nav>
+	</div>
+</aside>

@@ -1,0 +1,275 @@
+@import 'variables'
+
+.screen-project
+	section
+		background: $whiteColor
+		position: relative
+		z-index: 1
+		h3
+			font-family: $HelveticaNeueMedium
+			color: $blackColor
+			margin-bottom: 35px
+	.project-banner
+		width: 100%
+		min-height: 393px
+		text-align: center
+		.project-cover
+			width: 100%
+			height: 483px
+			background-size: cover
+			background-color: transparent
+			background-repeat: no-repeat
+			background-position: center center
+			position: fixed
+			top: 0
+			margin: 0 auto
+		.banner-content
+			background: rgba($lightGrayColor,.95)
+			min-height: 353px
+			padding-top: 40px
+			position: relative
+			.project-logo
+				display: block
+				margin: 0 auto 30px
+				background-color: $whiteColor
+				background-position: center center
+				background-repeat: no-repeat
+				background-size: 108px auto
+				width: 108px
+				height: 108px
+				border-radius: 54px
+				overflow: hidden
+				border: 1px solid rgba($blackColor,.1)
+			h1
+				font-family: $HelveticaNeueLt
+				font-size: 3.2em
+				line-height: 1.2em
+				color: $blackColor
+				margin-bottom: 11px
+			h2
+				font-family: $HelveticaNeueUltraLt
+				font-size: 2.6em
+				line-height: 1.2em
+				color: $blackColor
+				padding: 0 60px
+				margin-bottom: 21px
+			.metrics
+				margin-bottom: 0
+				padding-bottom: 20px
+				li
+					font-family: $HelveticaNeueMedium
+					display: inline-block
+					font-size: 3.2em
+					line-height: 1.2em
+					color: $grayColor
+					padding: 0 10px
+					span
+						display: block
+						font-family: $HelveticaNeueRoman
+						font-size: .465em
+						line-height: 1.2em
+			.progress
+				display: block
+				width: 0
+				height: 8px
+				max-width: 100%
+				position: absolute
+				bottom: 0
+				left: 0
+				background: $lightGreenColor
+				transition: width .3s
+	.project-nav
+		font-size: 1.6em
+		line-height: 2.31em
+		padding: 25px 0
+		font-family: $HelveticaNeueLt
+		a
+			color: $grayColor
+			& + a
+				margin-left: 30px
+			&.active
+				font-family: $HelveticaNeueMedium
+				color: $blackColor
+		.nav-social
+			margin-bottom: 20px
+			li
+				display: inline-block
+				margin: 0 0 0 20px
+				a
+					font-size: 1em
+					line-height: 2.188em
+					display: inline-block
+					&:hover
+						color: $blackColor
+		.button
+			font-family: $HelveticaNeueLt
+			color: $whiteColor
+	.project-discussion
+		.project-discussion-topic
+			border-bottom: 1px solid $lightGrayColor
+			&.last
+				border-bottom: none
+			.project-discussion-post
+				h4
+					font-size: 2.2em
+					line-height: 2.2em
+					margin-bottom: 10px
+				.post-header
+					margin-bottom: 17px
+					+clearfix
+					.project-discussion-avatar
+						float: left
+					.project-discussion-username
+						float: left
+						font-size: 2.2em
+						line-height: 2.045em
+						margin-left: 15px
+					.project-discussion-relative-date
+						font-size: 1.2em
+						line-height: 3.75em
+						margin-left: 10px
+				p
+					font-size: 1.6em
+					line-height: 1.2
+					& + p
+						margin-top: 20px
+					a
+						color: $linkBlueColor
+				.project-discussion-likes
+					display: block
+					font-size: 1.2em
+					line-height: 1.2em
+					color: $grayColor
+					text-align: right
+					margin: 20px 0
+				.onebox
+					display: block
+					border-left: 3px solid $blueColor
+					padding: 10px 20px
+					background-color: lighten($blueColor, 30%)
+					.source
+						font-size: 1.3em
+						line-height: 2em
+						margin-bottom: 5px
+					.onebox-body
+						h3
+							font-size: 1.8em
+							line-height: 1.2em
+							font-family: $HelveticaNeueMedium
+							margin-bottom: 5px
+						h4
+							font-size: 1.6em
+							line-height: 1.2em
+							font-family: $HelveticaNeueRoman
+						.thumbnail
+							float: left
+							margin: 0 15px 15px 0
+						p
+							font-size: 1.5em
+							line-height: 1.2em
+							margin-bottom: 5px
+				&+.project-discussion-post
+					padding-left: 65px
+		.button.discuss
+			display: block
+			width: 200px
+			margin: 0 auto 50px
+	.project-description
+		font-family: $HelveticaNeueRoman
+		.description
+			padding-bottom: 50px
+			.text
+				font-size: 1.5em
+				line-height: 1.2em
+				p
+					font-size: inherit
+					line-height: inherit
+				img
+					display: block
+					margin-bottom: 20px
+				strong
+					font-family: $HelveticaNeueMedium
+				em
+					font-family: $HelveticaNeueIt
+				ul
+					font-size: inherit
+					line-height: inherit
+					list-style-type: disc
+					font-family: $HelveticaNeueRoman
+				ol
+					line-height: inherit
+					font-family: $HelveticaNeueRoman
+			.video
+				width: 700px
+				margin: 0 auto
+		.faq
+			padding-bottom: 50px
+			ul li
+				margin-bottom: 0
+				border: 1px solid $lightGrayColor
+				border-bottom: none
+				&.last
+					border: 1px solid $lightGrayColor
+				&.active
+					border: none
+					.question
+						border: 1px solid $lightGrayColor
+				div
+					margin-bottom: 0
+					padding: 15px 15px 17px
+					p
+						margin-bottom: 0
+						line-height: 1.2em
+					&.question
+						display: block
+						background: $whiteColor
+						cursor: pointer
+		.company
+			padding-bottom: 80px
+			.company-description
+				margin-bottom: 55px
+			.company-contacts
+				font-size: inherit
+				line-height: inherit
+				list-style: none
+				text-align: center
+				+clearfix
+				> li
+					float: none
+					display: inline-block
+					&.break
+						display: block
+				h5
+					font-family: $HelveticaNeueMedium
+					color: $blackColor
+					margin-bottom: 10px
+				a, span
+					font-size: 1.5em
+					line-height: 1.2em
+					font-family: $HelveticaNeueLt
+					display: block
+					margin-bottom: 20px
+				.button
+					border-radius: 0
+					border: none
+					margin: 0
+					width: 100%
+			p
+				font-size: 1.6em
+				line-height: 1.2em
+			img
+				display: block
+				margin-bottom: 20px
+			strong
+				font-family: $HelveticaNeueMedium
+			em
+				font-family: $HelveticaNeueIt
+			ul
+				font-size: 1.5em
+				line-height: 1.2em
+				list-style-type: disc
+				font-family: $HelveticaNeueRoman
+			ol
+				font-size: 1.5em
+				line-height: 1.2em
+				font-family: $HelveticaNeueRoman

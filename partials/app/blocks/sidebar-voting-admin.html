@@ -1,0 +1,161 @@
+<div class="sidebar-content sidebar-voting-admin">
+	<div da-spinner ng-hide="!loading"></div>
+	<div ng-if="!newVoting">
+		<a href
+		   class="back-to-votes"
+		   ng-if="voting"
+		   ng-click="backToVotes()">Back to all votes</a>
+		<h4 ng-class="{'voting': title}">{{title ? title : 'Votes'}}</h4>
+		<span class="address">{{voting.wallet.public}}</span>
+		<div class="votings"
+		     ng-if="votings && !voting">
+			<ul>
+				<li class="voting-item"
+				    ng-repeat="voting in votings track by $index"
+				    ng-class="{last: $last}">
+					<h5>{{voting.title}}</h5>
+					<p>{{voting.description}}</p>
+					<a href
+					   class="gray button"
+					   ng-click="selectVoting(voting)">Details</a>
+				</li>
+			</ul>
+		</div>
+		<div class="voting"
+		     ng-if="voting">
+			<p>{{voting.description}}</p>
+			<ul ng-show="votingOptionsView">
+				<li class="voting-item option"
+				    ng-repeat="option in voting.options track by $index"
+				    ng-class="{last: $last}">
+					<h5>{{option.bio}} <span class="option-votes">{{(option.votesCount ? option.votesCount + '%' : '')}}</span></h5>
+					<span class="option-address">{{option.address}}</span>
+				</li>
+			</ul>
+			<div class="voting-invitees"
+			     ng-show="votingInviteesView">
+				<ul>
+					<li ng-repeat="(key, invitee) in voting.invitees track by $index">
+						<a ng-href="mailto:{{invitee.email}}"
+						   title="{{ (!invitee.signed && !invitee.voted) ? 'Invite sent.' : ( (invitee.signed && !invitee.voted) ? 'User is signed in, but not voted yet.' : 'User voted.') }}"
+						   ng-class="{'signed': invitee.signed, 'voted': invitee.voted}">
+							{{invitee.email}}
+						</a>
+					</li>
+				</ul>
+			</div>
+			<a href
+			   class="options-trigger button"
+			   ng-click="switchOptionsAndUsersView()">Show {{ votingOptionsView ? 'invitees' : 'voting options' }}</a>
+		</div>
+		<a class="add-voting button"
+		   ng-show="!loading && !voting"
+		   ng-click="addNewVoting()">Create new vote</a>
+	</div>
+	<form novalidate
+	      name="form.addVoting"
+	      ng-show="newVoting"
+	      ng-submit="createVoting()">
+		<h4>Create new vote</h4>
+		<label>
+			<span>Title</span>
+			<input type="text"
+			       name="votingName"
+			       ng-model="voting.votingName"
+			       ng-required="true" />
+			<span class="error" ng-show="hasError(form.addVoting.votingName)">{{form.addVoting.votingName.errorMessage}}</span>
+		</label>
+		<label>
+			<span>Description</span>
+			<input type="text"
+			       name="votingDescription"
+			       ng-model="voting.votingDescription"
+			       ng-required="true" />
+			<span class="error" ng-show="hasError(form.addVoting.votingDescription)">{{form.addVoting.votingDescription.errorMessage}}</span>
+		</label>
+		<label class="options"
+		       ng-repeat="option in votingOptions track by $index">
+			<span>{{$index ? '' : 'Options'}}</span>
+			<input type="text"
+			       ng-class="{small: $index > 1}"
+			       name="{{option.name}}"
+			       ng-model="option.value"
+			       ng-required="true" />
+			<a href
+			   class="option-remove"
+			   ng-if="$index > 1"
+			   ng-click="removeOption($index)"><i class="icon icon-close"></i></a>
+			<span class="error" ng-show="hasError(form.addVoting[option.name])">{{form.addVoting[option.name].errorMessage}}</span>
+		</label>
+		<span class="add-option">
+			<a href
+			   ng-click="addOption()">Add option</a>
+		</span>
+		<label class="multiple"
+		       ng-if="userInfo.allowMultiOptionsVote">
+			<span>Multiple?</span>
+			<input type="number"
+			       name="votingMultiple"
+			       min="1"
+			       ng-model="voting.votingMultiple"
+			       max="{{votingOptions.length-1}}"
+			       ng-required="true" />
+		</label>
+		<label class="invitees">
+			<span>Invitees</span>
+			<textarea  name="votingInvitees"
+			           ng-model="voting.votingInvitees"
+			           ng-required="true"
+			           ng-change="form.addVoting.votingInvitees.$invalid ? resetInvitesValidity() : parseEmails(form.addVoting.votingInvitees.$viewValue)"></textarea>
+			<span class="field-label">Please separate emails by comma</span>
+			<span class="error" ng-show="hasError(form.addVoting.votingInvitees)" ng-bind-html="form.addVoting.votingInvitees.errorMessage"></span>
+		</label>
+		<label>
+			<span>Start date</span>
+			<input type="text"
+			       name="votingStartDate"
+			       ng-model="voting.votingStartDate"
+			       ng-focus="votingStartDatePicker = true"
+			       ng-required="true"
+			       datepicker-popup="{{format}}"
+			       min-date="today"
+			       is-open="votingStartDatePicker" />
+			<span class="error" ng-show="hasError(form.addVoting.votingStartDate)">{{form.addVoting.votingStartDate.errorMessage}}</span>
+		</label>
+		<label>
+			<span>End date</span>
+			<input type="text"
+			       name="votingEndDate"
+			       ng-model="voting.votingEndDate"
+			       ng-required="true"
+			       ng-focus="votingEndDatePicker = true"
+			       datepicker-popup="{{format}}"
+			       is-open="votingEndDatePicker"
+			       min-date="voting.votingStartDate" />
+			<span class="error" ng-show="hasError(form.addVoting.votingEndDate)">{{form.addVoting.votingEndDate.errorMessage}}</span>
+		</label>
+
+		<p class="voting-price"
+		   ng-if="inviteesCount >= 2 && expectingPayment">
+			Estimated voting price: <b>{{paymentValue | satoshiToBTC}} BTC</b>.<br />
+			Vote asset issuance: <b>{{100000 | satoshiToBTC}} BTC</b>;<br />
+			Fees to send asset for {{inviteesCount}} users: <b>{{payForUsers | satoshiToBTC }} BTC</b>.<br />
+			<br />
+			Please send <b>{{paymentValue | satoshiToBTC}} BTC</b> to address:<br />
+			{{votingWallet.public}}
+		</p>
+
+		<input type="submit"
+		       ng-if="!expectingPayment"
+		       value="Create voting" />
+		<span class="waiting-for-payment button"
+		      ng-if="expectingPayment">
+			Waiting for payment
+			<i class="icon icon-spinner"></i>
+		</span>
+		<span class="cancel-adding-voting"
+		      ng-if="!expectingPayment">
+			<a href ng-click="cancelAddingVoting()">Cancel</a>
+		</span>
+	</form>
+</div>

@@ -1,0 +1,118 @@
+<div class="sidebar-content sidebar-cms">
+	<form name="form.cms"
+	      ng-submit="formSubmit()"
+	      novalidate>
+		<div da-spinner ng-show="loading"></div>
+		<h4>CMS</h4>
+		<div ng-form="form.cms">
+			<div class="project-basic-info cms-section" ng-form="form.cms.projectBasics">
+				<h3>Project basic info</h3>
+				<label>
+					Project name
+					<input type="text"
+					       name="projectName"
+					       ng-disabled="true"
+					       ng-model="projectData.project_name" />
+				</label>
+				<label>
+					Project title
+					<input type="text"
+					       name="projectTitle"
+					       ng-required="true"
+					       ng-model="projectData.project_title" />
+				</label>
+				<label>
+					Project description
+					<input type="text"
+					       name="projectDescription"
+					       ng-required="true"
+					       ng-model="projectData.project_description" />
+				</label>
+				<label class="project-logo">
+					<div class="project-logo-holder" ng-if="projectData.project_logo">
+						<img ng-src="{{projectData.project_logo}}/convert?w=108&h=108&fit=crop&quality=100" alt="" />
+					</div>
+					<div filepicker
+					     path="/projectsFiles/"
+					     pickerclass="blue button"
+					     container="swarm.shandro"
+					     callback="updateLogo(file)"
+					     mimetype="'image/*'"
+					     multiple=false>Upload project logo</div>
+					Picture will be resized to 108x108px
+				</label>
+				<label class="project-banner">
+					<img ng-if="projectData.project_cover"
+					     ng-src="{{projectData.project_cover}}/convert?w=280&fit=scale&quality=100" alt="" />
+					<div filepicker
+					     path="/projectsFiles/"
+					     pickerclass="blue button"
+					     container="swarm.shandro"
+					     callback="updateCover(file)"
+					     mimetype="'image/*'"
+					     multiple=false>Upload project cover</div>
+					Picture will be resized to 3840x992px
+				</label>
+				<label>
+					Coin name
+					<input type="text"
+					       name="projectCoin"
+					       ng-disabled="true"
+					       ng-model="projectData.project_coin" />
+				</label>
+				<label>
+					Initial coin price (in BTC)
+					<input type="text"
+					       name="projectCoinPrice"
+					       ng-disabled="true"
+					       ng-model="projectData.project_initial_coin_price" />
+				</label>
+				<label>
+					Goal
+					<input type="text"
+					       name="projectGoal"
+					       ng-disabled="true"
+					       ng-model="projectData.project_goal" />
+				</label>
+				<label>
+					Sale start date
+					<input type="text"
+					       name="saleStartDate"
+					       ng-disabled="true"
+					       ng-model="projectData.sale_dates.mainsale_start_date" />
+				</label>
+				<label>
+					Sale end date
+					<input type="text"
+					       name="saleEndDate"
+					       ng-disabled="true"
+					       ng-model="projectData.sale_dates.mainsale_end_date" />
+				</label>
+				<label>
+					Bank account details
+					<textarea name="projectBankAccount"
+					          ng-required="true"
+					          ng-model="projectData.payment_bank"></textarea>
+				</label>
+				<label>
+					Receiving BTC address
+					<input type="text"
+					       name="projectReceivingAddress"
+					       ng-disabled="true"
+					       ng-model="projectData.payment_address" />
+				</label>
+				<label class="field-last">
+					Vending machine address
+					<input type="text"
+					       name="projectVendingAddress"
+					       ng-disabled="true"
+					       ng-model="projectData.vending_address" />
+				</label>
+			</div>
+			<div da-sale-phases></div>
+			<div da-product-description></div>
+			<div da-product-faq></div>
+			<div da-product-company></div>
+		</div>
+	</form>
+</div>

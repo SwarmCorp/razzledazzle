@@ -1,0 +1,149 @@
+@import 'variables'
+@import 'mixins'
+
+.screen-portfolio
+	background: $whiteColor
+.portfolio
+	padding-top: 30px
+	border-top: 1px solid $lightGrayColor
+	.filters
+		padding-bottom: 10px
+		margin-bottom: 30px
+		border-bottom: 1px solid $lightGrayColor
+		+clearfix()
+		input
+			font-family: $HelveticaNeueLt
+			font-size: 1.6em
+			line-height: 1.563em
+			padding: 6px 15px 5px
+			box-sizing: border-box
+			border-radius: 3px
+			border: 1px solid darken($filterButtonBackgroundColor, 10%)
+			background: $whiteColor
+			color: $inputColor
+			display: inline-block
+			width: 100%
+		input, .button
+			margin-bottom: 20px !important
+	.search-empty
+		text-align: center
+	ul
+		+clearfix
+	.project
+		background: $whiteColor
+		border: 1px solid $lightGrayColor
+		box-sizing: border-box
+		min-height: 370px
+		margin-bottom: 30px
+		overflow: hidden
+		box-shadow: 0 0 3px $lightGrayColor
+		position: relative
+		.star
+			font-size: 1.5em
+			position: absolute
+			bottom: 10px
+			right: 10px
+		.project-logo
+			min-height: 170px
+			background-size: cover
+			background-color: $pureWhiteColor
+			background-repeat: no-repeat
+			background-position: center center
+			margin-bottom: 25px
+			position: relative
+			box-shadow: 0 0 5px $grayColor
+			&:after
+				content: ""
+				display: block
+				position: absolute
+				width: 100%
+				height: 100%
+				background: rgba($whiteColor,.7)
+				opacity: 0
+				transition: opacity .3s
+			.button
+				position: absolute
+				font-family: $HelveticaNeueLt
+				color: $whiteColor
+				top: 50%
+				left: 50%
+				width: 130px
+				margin: -17px 0 0 -65px
+				opacity: 0
+				z-index: 1
+				transition: background .4s, color .4s, box-shadow .4s, opacity .3s, text-shadow .4s
+		&.completed
+			.project-logo
+				&:after
+					display: none
+		&:hover
+			.project-logo
+				&:after
+					opacity: 1
+				.button
+					opacity: 1
+		.project-content
+			padding: 0 30px 20px
+			position: relative
+			h3
+				font-family: $HelveticaNeueMedium
+				font-size: 2em
+				line-height: 1.2em
+				color: $blackColor
+				margin-bottom: 0
+			h4
+				font-family: $HelveticaNeueMedium
+				font-size: 1.6em
+				line-height: 1.2em
+				color: $blackColor
+			p
+				font-family: $HelveticaNeueLt
+				color: $blackColor
+				line-height: 1.2em
+				margin-bottom: 30px
+				height: 60px
+				max-height: 60px
+				overflow: hidden
+			.metrics
+				font-family: $HelveticaNeueMedium
+				font-size: 1.6em
+				line-height: 1.2em
+				color: $blackColor
+				margin: 0
+				text-align: center
+				white-space: nowrap
+				li
+					display: inline-block
+					margin: 0 5px
+					span
+						display: block
+						font-family: $HelveticaNeueLt
+						font-size: .75em
+						line-height: 1.2em
+						color: $grayColor
+			.completed-sale-info,
+			.presale-info
+				p
+					color: $grayColor
+					margin-bottom: 0
+					height: auto
+					max-height: none
+					font-size: 1.2em
+					line-height: 1.2em
+			.progress
+				display: block
+				width: 0
+				height: 8px
+				max-width: 100%
+				position: absolute
+				bottom: 0
+				left: 0
+				background: $lightGreenColor
+				transition: width .3s
+		&.completed
+			h4
+				margin-bottom: 1px
+			h3, h4, p
+				color: $grayColor
+			.progress
+				background: $grayColor

@@ -1,0 +1,22 @@
+<header da-checkout-header></header>
+<section da-checkout-done
+         class="container">
+	<div class="done eight columns offset-by-four">
+		<h2 class="screen-title">Done!</h2>
+		<p class="step-description">
+			Thank you! We received your payment.<br />
+			We will send the coins to your wallet <br />
+			(the one you downloaded or entered) after the sale ends.
+			The project owner will contact you if additional information to fulfill your order is needed.
+		</p>
+		<img src="/images/checkout/check-big.png" alt="" />
+		<div class="share-block da-animate"
+		     ng-hide="!shareVisible">
+			<div class="social-links">
+				<!-- Buttons in a single row is for a reason (margin between inline elements) -->
+				<a href ng-click="share.twitter()" class="button twitter">Tweet</a><a href ng-click="share.facebook()" class="button facebook">Share on FB</a>
+			</div>
+			Redirects to homepage in {{redirectTimeout}}
+		</div>
+	</div>
+</section>

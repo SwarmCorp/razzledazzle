@@ -1,0 +1,46 @@
+<div class="wallet-existing ten centered columns">
+	<h2 class="screen-title">
+		Your address
+		<small>(Or <a href ng-click="createNew()">create new one</a>)</small>
+	</h2>
+	<div class="step-description">
+		<p>
+			Please <b>enter the bitcoin address</b> you want to use <b>to receive the assets</b>.
+			Make sure you control the private key of the address (<a href ng-click="additionalInfo = !additionalInfo">learn more</a>).
+		</p>
+		<p ng-show="additionalInfo">
+			Some wallets (like Coinbase, Bitstamp, Xapo,…) have a particular way of dealing with transactions
+			to and from your wallet. This allows them to offer a great service but isn't compatible with the the assets (coins) we're about to send you.
+			If you're not sure, let us just <a href ng-click="createNew()">create a new wallet for you</a>.
+		</p>
+	</div>
+	<form class="wallet-address eight centered columns" ng-class="{valid: addressValid}">
+		<input type="text"
+		       ng-model="publicKey"
+		       placeholder="Your bitcoin address goes here" />
+		<i class="wallet-key-icon icon icon-check"></i>
+	</form>
+	<i ng-if="addressValid" class="angle icon icon-angle-top"></i>
+	<div class="confirmation"
+	     ng-show="addressValid">
+		<span class="checkbox-custom"
+		      ng-class="{checked: controlConfirmed}"
+		      ng-click="controlConfirmed = !controlConfirmed"
+			></span>
+		<label>
+			<input class="ng-hide"
+			       type="checkbox"
+			       da-custom-form-element
+			       ng-model="controlConfirmed"
+			       ng-checked="controlConfirmed" />
+			I have control over the private key of this address.&nbsp;<br />
+			So no Coinbase, Bitstamp, Xapo or similar service.
+		</label>
+	</div>
+	<footer class="mobile-footer standard-hide mobile-show">
+		<a href class="button green"
+		   ng-class="{disabled: buttonNextDisabled, loading: buttonLoading}"
+		   ng-disabled="buttonNextDisabled"
+		   ng-click="nextStep()">{{buttonNext()}}</a>
+	</footer>
+</div>

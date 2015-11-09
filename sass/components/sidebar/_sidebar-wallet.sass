@@ -1,0 +1,73 @@
+@import 'variables'
+@import 'mixins'
+
+.sidebar-wallet
+	.field-wallet
+		position: relative
+		.input-address
+			padding-right: 30px
+		.icon-check
+			display: inline-block
+			position: absolute
+			margin-top: 7px
+			top: 15px
+			right: 7px
+			line-height: 2em
+			color: $linkGreenColor
+		+ p
+			font-family: $HelveticaNeueIt
+			color: $redColor
+			font-size: 1.5em
+			line-height: 1.2em
+			padding: 0 20px
+		.error
+			padding-top: 0
+			margin-bottom: 20px
+	.wallet-create
+		display: block
+	.edit,
+	.edit-cancel
+		font-size: 1.5em
+		margin-left: 20px
+	.edit-cancel
+		display: block
+		width: 50px
+		margin: 0 auto
+	.holdings
+		font-size: 1.5em
+		line-height: 1.2em
+		color: $darkGrayColor
+		margin-bottom: 62px
+		position: relative
+		&:after
+			content: ""
+			display: block
+			position: absolute
+			left: 0
+			bottom: -23px
+			height: 1px
+			width: 53px
+			background: $lightGrayColor
+		.asset
+			margin-bottom: 5px
+			+clearfix
+			&:hover
+				background: $lightGrayColor
+				.asset-name
+					background: $lightGrayColor
+		.asset-name
+			font-family: $HelveticaNeueMedium
+			position: absolute
+			overflow: hidden
+			text-overflow: ellipsis
+			width: 130px
+			padding: 5px
+			margin-left: -5px
+			&:hover
+				overflow: visible
+				width: auto
+				padding-right: 5px
+		.asset-quantity
+			padding: 5px
+			float: right
+			font-family: $HelveticaNeueRoman

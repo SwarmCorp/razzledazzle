@@ -1,0 +1,77 @@
+<div class="container">
+	<div da-spinner ng-show="loading"></div>
+	<div class="signup-form-popup">
+		<form novalidate
+		      name="form.signup"
+		      class="signup-form seven columns"
+		      ng-submit="signup()">
+			<h4>Sign Up</h4>
+			<div class="six centered columns">
+				<label class="three alpha columns">
+					<span class="error-placeholder" ng-if="!hasError(form.signup.firstName) && hasError(form.signup.lastName)">&nbsp;</span>
+					<span class="error" ng-show="hasError(form.signup.firstName)">{{form.signup.firstName.errorMessage || '&nbsp;'}}</span>
+					<input type="text"
+					       name="firstName"
+					       placeholder="First name"
+					       ng-model="signup.firstName"
+					       ng-required="true" />
+				</label>
+				<label class="three omega columns">
+					<span class="error-placeholder" ng-if="hasError(form.signup.firstName) && !hasError(form.signup.lastName)">&nbsp;</span>
+					<span class="error" ng-show="hasError(form.signup.lastName)">{{form.signup.lastName.errorMessage || '&nbsp;'}}</span>
+					<input type="text"
+					       name="lastName"
+					       placeholder="Last name"
+					       ng-model="signup.lastName"
+					       ng-required="true" />
+				</label>
+				<label class="six alpha columns">
+					<span class="error" ng-show="hasError(form.signup.email)">{{form.signup.email.errorMessage || '&nbsp;'}}</span>
+					<input type="email"
+					       name="email"
+					       placeholder="Email"
+					       ng-model="signup.email"
+					       ng-pattern="/^[a-z]+[a-z0-9._-]+@[a-z]+\.[a-z.]{2,5}$/"
+					       ng-required="true" />
+				</label>
+				<label class="three alpha columns">
+					<span class="error-placeholder"
+					      ng-if="!hasError(form.signup.password) && !passwordsMatch()">&nbsp;</span>
+					<span class="error" ng-show="hasError(form.signup.password)">{{form.signup.password.errorMessage || '&nbsp;'}}</span>
+					<input type="password"
+					       name="password"
+					       placeholder="Password"
+					       ng-change="form.signup.password.$invalid ? resetPasswordValidity() : null"
+					       ng-model="signup.password"
+					       ng-required="true" />
+				</label>
+				<label class="three omega columns">
+					<span class="error-placeholder"
+					      ng-if="hasError(form.signup.password) && passwordsMatch()">&nbsp;</span>
+					<span class="error" ng-show="!passwordsMatch()">{{form.signup.passwordConfirm.errorMessage || '&nbsp;'}}</span>
+					<input type="password"
+					       name="passwordConfirm"
+					       placeholder="Confirm password"
+					       ng-model="signup.passwordConfirm"
+					       ng-required="passwordRequired" />
+				</label>
+
+				<input type="submit"
+				       value="Sign up"
+				       class="button green simple">
+				<p class="terms">
+					By signing up, I agree to Swarm's <a href="/terms" target="_blank">Terms of Service</a> and
+					<a href="/privacy-policy" target="_blank">Privacy Policy</a>.
+				</p>
+				<p class="align-center">
+					Already registered?
+					<a href ng-click="login()">Log in</a>
+				</p>
+				<span class="divider"><b>or</b></span>
+				<a href
+				   class="simple facebook button"
+				   ng-click="loginWithFacebook()">Sign Up with Facebook</a>
+			</div>
+		</form>
+	</div>
+</div>

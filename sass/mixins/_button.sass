@@ -1,0 +1,35 @@
+@import 'variables/colors'
+@import 'variables/fonts'
+
+=button($color: $greenButtonColor, $hoverColor: $greenButtonHoverColor, $background: $greenButtonBackgroundColor, $hoverBackground: $greenButtonHoverBackgroundColor, $borderColor: $greenButtonBorderColor, $textShadow: null, $textShadowHover: $greenButtonTextShadowHoverColor, $boxShadow: null, $boxShadowHover: $greenButtonBoxShadowHoverColor)
+	&
+		@content
+		@if $borderColor
+			border: 1px solid $borderColor
+		@else
+			border: none
+		color: $color
+		background: $background
+		@if $textShadow
+			text-shadow: $textShadow
+		@if $boxShadow
+			box-shadow: $boxShadow
+		@else
+			box-shadow: none
+	&:hover
+		color: $hoverColor
+		text-decoration: none
+		background: $hoverBackground
+		@if $boxShadowHover
+			box-shadow: $boxShadowHover
+		@else
+			box-shadow: none
+		@if $textShadowHover
+			text-shadow: $textShadowHover
+		@else
+			text-shadow: none
+		&:disabled, &.disabled
+			color: rgba($whiteColor,.4)
+			background: $lightGrayColor
+			border-color: $lightGrayColor
+			box-shadow: none

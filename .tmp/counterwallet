@@ -1,0 +1,28 @@
+var wordsToSeed = function(words) {
+  var m = new Mnemonic(words);
+  return m.toHex();
+}
+
+var getAddressKey = function(index) {
+  var derivedKey = this.HierarchicalKey.derive(this.basePath+index);
+  return new CWPrivateKey(derivedKey.eckey.private.toString('hex'));
+}
+
+var basePath = 'm/0\'/0/';
+var bitcore = require('bitcore');
+var mnemonic = new Mnemonic(128);
+var words = mnemonic.toWords();
+var passphrase = words.join(' ');
+console.log(passphrase)
+
+var seed = this.wordsToSeed(words);
+
+var hierarchicalKey = bitcore.HierarchicalKey.seed(seed, bitcore.networks['livenet'].name);
+var derivedKey = hierarchicalKey.derive(basePath+0);
+var privateKey = derivedKey.eckey.private.toString('hex')
+
+var walletKey = new bitcore.WalletKey({network: bitcore.networks['livenet']});
+walletKey.fromObj({priv: privateKey});
+
+console.log(walletKey.privKey.public.toString('hex'))
+console.log(walletKey.storeObj().addr)

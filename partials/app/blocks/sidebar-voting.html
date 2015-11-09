@@ -1,0 +1,64 @@
+<div class="sidebar-content sidebar-voting">
+	<div da-spinner ng-hide="!loading"></div>
+	<a href
+	   class="back-to-votes"
+	   ng-if="voting"
+	   ng-click="backToVotes()">Back to all votes</a>
+	<h4>{{voting ? voting.title : 'Votes'}}</h4>
+	<form novalidate
+	      name="form.secret"
+	      ng-submit="checkSecret()"
+	      ng-show="!secredAccepted">
+		<p class="passphrase-pitch">Please enter your secret 12-word passphrase below (from the Paper Wallet you downloaded earlier), or private key. We don’t store it and are not able to resend it.</p>
+		<label>
+			<input type="password"
+			       name="accessSecret"
+			       ng-model="accessSecret"
+			       ng-change="checkSecret()" />
+			<span class="error" ng-show="form.secret.accessSecret.$invalid">{{form.secret.accessSecret.errorMessage}}</span>
+		</label>
+	</form>
+
+	<p ng-if="secredAccepted && !votings">Sorry, there are no votes available for you at this time.</p>
+
+	<div class="votings"
+	     ng-if="!voting">
+		<ul>
+			<li class="voting-item"
+			    ng-repeat="voting in votings track by $index"
+			    ng-class="{last: $last}">
+				<h5>{{voting.title}}</h5>
+				<p>{{voting.description}}</p>
+				<a href
+				   class="gray button"
+				   ng-if="!votingDone"
+				   ng-click="selectVoting(voting)">Details</a>
+			</li>
+		</ul>
+	</div>
+	<div class="voting"
+	     ng-if="voting">
+		<p ng-class="{'no-vote': ((!canVote && !voting.votingDone) || voting.votingDone)}">{{voting.description}}</p>
+		<span class="cant-vote blue button"
+		      ng-if="!canVote && !voting.votingDone">Voting is unavailable at the moment. You will receive an email as soon as the next round opens up.</span>
+		<span class="cant-vote blue button"
+		      ng-if="voting.votingDone">Thanks for your vote!</span>
+		<ul>
+			<li class="voting-item option"
+			    ng-repeat="option in voting.options track by $index"
+			    ng-class="{last: $last, 'no-vote': ((!canVote && !voting.votingDone) || voting.votingDone)}">
+				<h5>{{option.bio}} <span class="option-votes">{{(option.votesCount ? option.votesCount + '%' : '')}}</span></h5>
+				<a href
+				   class="button"
+				   ng-if="canVote && !voting.votingDone"
+				   ng-class="{'gray': !option.confirmVote && !option.voted, 'blue': option.voted, 'voting-done': voting.votingDone}"
+				   ng-click="vote(option)">{{(option.confirmVote && !option.voted) ? 'Confirm' : (option.voted ? 'Your vote' : 'Vote')}}</a>
+				<span class="option-address"
+				      ng-if="canVote"
+				      ng-click="toggleOptionAddress(option)">
+					{{option.addressVisible ? option.address : 'See voting address'}}
+				</span>
+			</li>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+{
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ],
+  "rewrites": [
+    {
+      "source": "**",
+      "destination": "/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/v",
+      "destination": "/apply",
+      "type": 301
+    },
+    {
+      "source": "/V",
+      "destination": "/apply",
+      "type": 301
+    }
+  ],
+  "firebase": "dazzle-staging"
+}

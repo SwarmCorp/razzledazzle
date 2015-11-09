@@ -1,0 +1,13 @@
+<header da-checkout-header></header>
+<section da-checkout-wallet
+         class="container">
+
+	<!-- Show new wallet template (partials/app/components/checkout/wallet-new.html) -->
+	<section da-checkout-wallet-new
+	         ng-if="!hasWallet"></section>
+
+	<!-- Show existing wallet template (partials/app/components/checkout/wallet-existing.html) -->
+	<section da-checkout-wallet-existing
+	         ng-if="hasWallet"></section>
+
+</section>

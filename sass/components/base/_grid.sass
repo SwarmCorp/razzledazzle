@@ -1,0 +1,350 @@
+// Base 960 Grid
+.container
+	position: relative
+	width: 960px
+	margin: 0 auto
+	padding: 0
+	.column, .columns
+		float: left
+		display: inline
+		margin-left: 10px
+		margin-right: 10px
+		&.centered
+			display: block
+			float: none
+			margin-left: auto
+			margin-right: auto
+	.pull-left
+		float: left
+	.pull-right
+		float: right
+	.row
+		margin-bottom: 20px
+
+	// Nested Column Classes
+	.alpha
+		margin-left: 0
+	.omega
+		margin-right: 0
+
+	// Base Grid
+	.column
+		&.one
+			width: 40px
+		&.one-third
+			width: 300px
+		&.two-thirds
+			width: 620px
+	.columns
+		&.two
+			width: 100px
+		&.three
+			width: 160px
+		&.four
+			width: 220px
+		&.five
+			width: 280px
+		&.six
+			width: 340px
+		&.seven
+			width: 400px
+		&.eight
+			width: 460px
+		&.nine
+			width: 520px
+		&.ten
+			width: 580px
+		&.eleven
+			width: 640px
+		&.twelve
+			width: 700px
+		&.thirteen
+			width: 760px
+		&.fourteen
+			width: 820px
+		&.fifteen
+			width: 880px
+		&.sixteen
+			width: 940px
+
+	// Offsets
+	.offset-by-one
+		padding-left: 60px
+	.offset-by-two
+		padding-left: 120px
+	.offset-by-three
+		padding-left: 180px
+	.offset-by-four
+		padding-left: 240px
+	.offset-by-five
+		padding-left: 300px
+	.offset-by-six
+		padding-left: 360px
+	.offset-by-seven
+		padding-left: 420px
+	.offset-by-eight
+		padding-left: 480px
+	.offset-by-nine
+		padding-left: 540px
+	.offset-by-ten
+		padding-left: 600px
+	.offset-by-eleven
+		padding-left: 660px
+	.offset-by-twelve
+		padding-left: 720px
+	.offset-by-thirteen
+		padding-left: 780px
+	.offset-by-fourteen
+		padding-left: 840px
+	.offset-by-fifteen
+		padding-left: 900px
+
+	.offset-of-one
+		padding-right: 60px
+	.offset-of-two
+		padding-right: 120px
+	.offset-of-three
+		padding-right: 180px
+	.offset-of-four
+		padding-right: 240px
+	.offset-of-five
+		padding-right: 300px
+	.offset-of-six
+		padding-right: 360px
+	.offset-of-seven
+		padding-right: 420px
+	.offset-of-eight
+		padding-right: 480px
+	.offset-of-nine
+		padding-right: 540px
+	.offset-of-ten
+		padding-right: 600px
+	.offset-of-eleven
+		padding-right: 660px
+	.offset-of-twelve
+		padding-right: 720px
+	.offset-of-thirteen
+		padding-right: 780px
+	.offset-of-fourteen
+		padding-right: 840px
+	.offset-of-fifteen
+		padding-right: 900px
+
+// Tablet (Portrait)
+@media screen and (min-width: 768px) and (max-width: 959px)
+	.container
+		width: 768px
+		.column, .columns
+			margin-left: 10px
+			margin-right: 10px
+			&.alpha
+				margin-left: 0
+				margin-right: 10px
+			&.omega
+				margin-right: 0
+				margin-left: 10px
+		.alpha.omega
+			margin-left: 0
+			margin-right: 0
+
+		.column
+			&.one
+				width: 28px
+			&.one-third
+				width: 236px
+			&.two-thirds
+				width: 492px
+		.columns
+			&.one
+				width: 28px
+			&.two
+				width: 76px
+			&.three
+				width: 124px
+			&.four
+				width: 172px
+			&.five
+				width: 220px
+			&.six
+				width: 268px
+			&.seven
+				width: 316px
+			&.eight
+				width: 364px
+			&.nine
+				width: 412px
+			&.ten
+				width: 460px
+			&.eleven
+				width: 508px
+			&.twelve
+				width: 556px
+			&.thirteen
+				width: 604px
+			&.fourteen
+				width: 652px
+			&.fifteen
+				width: 700px
+			&.sixteen
+				width: 748px
+
+		// Offsets
+		.offset-by-one
+			padding-left: 48px
+		.offset-by-two
+			padding-left: 96px
+		.offset-by-three
+			padding-left: 144px
+		.offset-by-four
+			padding-left: 192px
+		.offset-by-five
+			padding-left: 240px
+		.offset-by-six
+			padding-left: 288px
+		.offset-by-seven
+			padding-left: 336px
+		.offset-by-eight
+			padding-left: 384px
+		.offset-by-nine
+			padding-left: 432px
+		.offset-by-ten
+			padding-left: 480px
+		.offset-by-eleven
+			padding-left: 528px
+		.offset-by-twelve
+			padding-left: 576px
+		.offset-by-thirteen
+			padding-left: 624px
+		.offset-by-fourteen
+			padding-left: 672px
+		.offset-by-fifteen
+			padding-left: 720px
+
+		.offset-of-one
+			padding-right: 48px
+		.offset-of-two
+			padding-right: 96px
+		.offset-of-three
+			padding-right: 144px
+		.offset-of-four
+			padding-right: 192px
+		.offset-of-five
+			padding-right: 240px
+		.offset-of-six
+			padding-right: 288px
+		.offset-of-seven
+			padding-right: 336px
+		.offset-of-eight
+			padding-right: 384px
+		.offset-of-nine
+			padding-right: 432px
+		.offset-of-ten
+			padding-right: 480px
+		.offset-of-eleven
+			padding-right: 528px
+		.offset-of-twelve
+			padding-right: 576px
+		.offset-of-thirteen
+			padding-right: 624px
+		.offset-of-fourteen
+			padding-right: 672px
+		.offset-of-fifteen
+			padding-right: 720px
+
+// Mobile (Portrait)
+@media screen and (max-width: 767px)
+	.container
+		width: 300px
+		.column, .columns
+			margin: 0
+		.column
+			&.one, &.one-third, &.two-thirds
+				width: 300px
+		.columns
+			&.one,
+			&.two,
+			&.three,
+			&.four,
+			&.five,
+			&.six,
+			&.seven,
+			&.eight,
+			&.nine,
+			&.ten,
+			&.eleven,
+			&.twelve,
+			&.thirteen,
+			&.fourteen,
+			&.fifteen,
+			&.sixteen
+				width: 300px
+		// Offsets
+		.offset-by-one,
+		.offset-by-two,
+		.offset-by-three,
+		.offset-by-four,
+		.offset-by-five,
+		.offset-by-six,
+		.offset-by-seven,
+		.offset-by-eight,
+		.offset-by-nine,
+		.offset-by-ten,
+		.offset-by-eleven,
+		.offset-by-twelve,
+		.offset-by-thirteen,
+		.offset-by-fourteen,
+		.offset-by-fifteen
+			padding-left: 0
+
+		.offset-of-one,
+		.offset-of-two,
+		.offset-of-three,
+		.offset-of-four,
+		.offset-of-five,
+		.offset-of-six,
+		.offset-of-seven,
+		.offset-of-eight,
+		.offset-of-nine,
+		.offset-of-ten,
+		.offset-of-eleven,
+		.offset-of-twelve,
+		.offset-of-thirteen,
+		.offset-of-fourteen,
+		.offset-of-fifteen
+			padding-right: 0
+
+// Mobile (Landscape)
+@media screen and (min-width: 480px) and (max-width: 767px)
+	.container
+		width: 420px
+		.column, .columns
+			margin: 0
+		.column
+			&.one, &.one-third, &.two-thirds
+				width: 420px
+		.columns
+			&.one,
+			&.two,
+			&.three,
+			&.four,
+			&.five,
+			&.six,
+			&.seven,
+			&.eight,
+			&.nine,
+			&.ten,
+			&.eleven,
+			&.twelve,
+			&.thirteen,
+			&.fourteen,
+			&.fifteen,
+			&.sixteen
+				width: 420px
+
+.clear
+	clear: both
+	display: block
+	overflow: hidden
+	visibility: hidden
+	width: 0
+	height: 0

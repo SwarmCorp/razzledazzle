@@ -1,0 +1,20 @@
+<header class="checkout-header">
+	<div class="container">
+		<a href
+		   ng-href="/projects/{{projectId}}"
+		   class="pull-left swarm-logo icon icon-logo"></a>
+		<h3 class="pull-left">
+			<a href="/projects/{{projectId}}">{{project.project_title}}</a>
+		</h3>
+		<nav class="pull-right header-nav">
+			<a href
+			   class="step-back pull-left"
+			   ng-if="backStepAvailable"
+			   ng-click="goBack()">Back</a>
+			<a href class="three columns green button"
+			   ng-class="{disabled: buttonNextDisabled, loading: buttonLoading}"
+			   ng-disabled="buttonNextDisabled"
+			   ng-click="nextStep()">{{buttonNext()}}</a>
+		</nav>
+	</div>
+</header>

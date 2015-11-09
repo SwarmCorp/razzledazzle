@@ -1,0 +1,366 @@
+@import 'variables'
+@import 'mixins'
+
+.checkout
+	.checkout-header
+		padding: 30px 0 20px
+		margin-bottom: 50px
+		position: relative
+		background: $whiteColor
+		z-index: 2
+		+clearfix
+		.swarm-logo
+			color: $blackColor
+			font-size: 3.3em
+			line-height: 1.2em
+			margin-left: 10px
+		h3
+			font-size: 2em
+			line-height: 2em
+			margin: 0 0 0 20px
+			a
+				font-size: inherit
+				line-height: inherit
+				color: $grayColor
+				&:hover
+					color: $blackColor
+		.header-nav
+			text-align: right
+			.step-back
+				display: block
+				font-size: 1.5em
+				line-height: 2.467em
+				margin-right: 15px
+			.button
+				margin-bottom: 0
+	.screen-title
+		text-align: center
+		margin-bottom: 40px
+	.step-description
+		text-align: center
+		font-family: $HelveticaNeueLt
+		font-size: 1.6em
+		line-height: 1.2em
+		margin-bottom: 30px
+		p
+			font-size: inherit
+			line-height: inherit
+		b
+			font-family: $HelveticaNeueMedium
+	.confirmation
+		color: $textColor
+		font-size: 1.6em
+		text-align: center
+		padding-top: 25px
+		margin: 0 10px 50px
+		background: url(image-url('checkout/bundle-divider.jpg', true, false)) repeat-x top left transparent
+		+image-2x(image-url('checkout/bundle-divider@2x.jpg', true, false), 4px, 1px)
+		label
+			font-size: inherit
+			line-height: inherit
+		.button
+			min-width: 140px
+			margin-left: 20px
+			width: auto
+		.cancel
+			color: $grayColor
+	.angle
+		display: block
+		font-size: 2em
+		margin: 0 auto
+		width: 20px
+	.user
+		text-align: center
+		.user-login
+			.button
+				margin-bottom: 10px
+			.link-signup
+				display: block
+				width: 200px
+				margin: 0 auto 40px
+				font-size: 1.5em
+				line-height: 1.2em
+				font-family: $HelveticaNeueMedium
+				color: $linkColor
+			.divider
+				display: block
+				margin-bottom: 40px
+				background: url(image-url('checkout/bundle-divider.jpg', true, false)) repeat-x center left transparent
+				+image-2x(image-url('checkout/bundle-divider@2x.jpg', true, false), 4px, 1px)
+				b
+					font-family: $HelveticaNeueLt
+					font-size: 2em
+					line-height: 1.2em
+					padding: 0 40px
+					background: $whiteColor
+		.aml-form
+			text-align: left
+			margin-bottom: 40px
+			+clearfix
+			label
+				text-indent: 0
+				.error
+					padding-top: 0
+				.error-placeholder
+					display: block
+					font-family: $HelveticaNeueLt
+					font-size: 1em
+				input
+					margin-bottom: 10px
+	.wallet-new
+		.screen-title
+			small
+				display: block
+				font-size: .7em
+		.passphrase-holder
+			padding-top: 20px
+			margin-bottom: 25px
+			text-align: center
+			.passphrase
+				background: $whiteColor
+				border: 1px dotted $lightGrayColor
+				box-sizing: border-box
+				font-family: $HelveticaNeueMedium
+				color: $blackColor
+				font-size: 1.5em
+				line-height: 1.786em
+				display: block
+				padding: 11px 15px 9px
+				text-align: left
+		.angle
+			color: $blackColor
+			margin-bottom: 30px
+	.wallet-existing
+		.screen-title
+			small
+				display: block
+				font-size: .7em
+		.wallet-address
+			position: relative
+			input
+				padding: 9px 15px 8px
+			.wallet-key-icon
+				color: $greenColor
+				font-size: 2em
+				position: absolute
+				top: 50%
+				right: 10px
+				margin-top: -20px
+				opacity: 0
+				transition: opacity .3s
+			&.valid
+				input
+					background: $whiteColor
+					color: $blackColor
+				.wallet-key-icon
+					opacity: 1
+		.angle
+			margin: 0 auto 55px
+		.confirmation
+			label
+				top: 5px
+				display: inline-block
+				line-height: 1.2em
+	.payment
+		.amount
+			form
+				position: relative
+				margin-bottom: 0
+				input
+					color: $blackColor
+					font-size: 3.6em
+					line-height: 1em
+					font-weight: bold
+					text-align: center
+					padding: 22px 10px 18px
+					font-family: $HelveticaNeueMedium
+					margin-right: 0
+					-moz-appearance: textfield
+					&::-webkit-outer-spin-button,
+					&::-webkit-inner-spin-button
+						-webkit-appearance: none
+				.amount-buttons
+					margin-top: 10px
+					position: absolute
+					right: -28px
+					top: 0
+					a
+						width: 28px
+						display: block
+						text-align: center
+						background: $blueButtonBackgroundColor
+						color: $whiteColor
+						transition: all .3s
+						box-sizing: border-box
+						&:hover
+							background: $blueButtonHoverBackgroundColor
+						&.disabled
+							background: lighten($blueButtonBackgroundColor, 40%)
+						.icon
+							font-size: 1.3em
+							line-height: 2.2em
+			p
+				text-align: center
+				margin-bottom: 40px
+		.payment-method
+			+clearfix
+			span
+				display: inline-block
+				width: 50%
+				text-align: center
+				font-size: 1.6em
+				margin-bottom: 10px
+				color: $grayColor
+				transition: color .3s
+				+clearfix
+				&.active
+					color: $blackColor
+			.button
+				font-family: $HelveticaNeueLt
+				width: 50%
+				margin-bottom: 35px
+				border-radius: 3px 0 0 3px
+				border-right: none
+				overflow: visible
+				float: left
+				&.fiat
+					position: relative
+					border-radius: 0 3px 3px 0
+					border-left: none
+					&:after
+						content: ""
+						display: block
+						width: 101px
+						height: 15px
+						position: absolute
+						left: 50%
+						bottom: -20px
+						margin-left: -50px
+						background: url(image-url('checkout/stripe.png', true, false)) no-repeat top left transparent
+						+image-2x(image-url('checkout/stripe@2x.png', true, false), 101px, 15px)
+				b
+					font-family: $HelveticaNeueMedium
+		.method-bitcoin
+			.payment-qr-holder
+				padding: 40px 0
+				position: relative
+				+clearfix
+				.total
+					font-size: 3.6em
+					line-height: 1.2em
+					font-family: $HelveticaNeueMedium
+					color: $blackColor
+					padding-top: 55px
+					span
+						text-align: right
+						float: right
+						white-space: nowrap
+				.address-pointer
+					.angle
+						font-size: 2.8em
+						color: $lightGrayColor
+						position: absolute
+						top: 50%
+						margin-top: -18px
+				.address-holder
+					text-align: center
+					min-height: 160px
+					position: relative
+					img
+						display: block
+						margin: 0 auto
+					span
+						display: block
+			.address-field
+				clear: both
+				margin-bottom: 20px
+				text-align: center
+				span
+					border: 1px solid $inputBorderColor
+					background: $inputBackgroundColor
+					color: $inputColor
+					display: block
+					padding: 11px 15px 9px
+					font-size: 2em
+					line-height: 1.786em
+					font-family: $HelveticaNeueLt
+					margin-bottom: 20px
+					width: 100%
+					outline: none
+					box-sizing: border-box
+					border-radius: 3px
+					transition: background .4s, color .4s, box-shadow .4s
+					text-align: center
+			.link-copy
+				font-family: $HelveticaNeueRoman
+				font-size: 1.3em
+				color: $lightGrayColor
+				display: inline-block
+				margin-bottom: 40px
+				.icon
+					margin-right: 5px
+				&:hover,
+				&.zeroclipboard-is-hover
+					color: $blackColor
+		.method-fiat
+			input
+				&.ng-touched.ng-invalid,
+				&.ng-dirty.ng-invalid
+					border: 1px solid $redColor
+					color: $redColor
+			.ng-submitted
+				input
+					&.ng-invalid, &.ng-untouched
+						border: 1px solid $redColor
+						color: $redColor
+					&.ng-untouched.ng-valid
+						border: 1px solid $inputBorderColor
+						color: $inputColor
+			label
+				margin-bottom: 7px
+			.expiration-date
+				input
+					margin: 0 10px
+					max-width: 68px
+					&.alpha
+						margin-left: 0
+					&.omega
+						margin-right: 0
+			.cvc
+				input
+					max-width: 93px
+					float: left
+				img
+					margin-left: 10px
+					display: inline-block
+					max-height: 34px
+	.done
+		text-align: center
+		> img
+			margin-bottom: 35px
+		.share-block
+			color: $grayColor
+			font-family: $HelveticaNeueRoman
+			font-size: 1.5em
+			padding-top: 25px
+			margin: 0 10px
+			opacity: 1
+			visibility: visible
+			background: url(image-url('checkout/bundle-divider.jpg', true, false)) repeat-x top left transparent
+			+image-2x(image-url('checkout/bundle-divider@2x.jpg', true, false), 4px, 1px)
+
+			&.ng-hide-add.ng-hide-add-active,
+			&.ng-hide-remove.ng-hide-remove-active
+				transition: opacity .3s
+			&.ng-hide
+				opacity: 0
+				visibility: hidden
+			.social-links
+				.button
+					min-width: 160px
+					&.twitter
+						border-radius: 3px 0 0 3px
+						border-right: none
+					&.facebook
+						border-radius: 0 3px 3px 0
+						border-left: none

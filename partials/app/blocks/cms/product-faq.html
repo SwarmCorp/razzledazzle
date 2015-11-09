@@ -1,0 +1,41 @@
+<div class="cms-product-faq cms-section">
+	<h5>FAQ</h5>
+	<ul ng-if="projectData.faq">
+		<li class="filled-faq"
+		    ng-repeat="faq in projectData.faq track by $index"
+		    ng-hide="faqNotFilledIn">
+			<p class="faq-question">{{faq.question}}</p>
+			<p class="faq-answer">{{faq.answer}}</p>
+			<a href class="faq-edit"
+			   ng-click="editFaq($index)"></a>
+			<a href class="faq-delete"
+			   ng-click="deleteFaq($index)"></a>
+		</li>
+	</ul>
+	<div ng-form="form.projectFaq_{{$index}}"
+	     ng-if="!faq.filledIn"
+	     ng-repeat="faq in faqs track by $index">
+		<label>
+			This is the question
+			<textarea name="projectFaqQuestion_{{faq.name}}"
+			          ng-class="{'invalid': $invalid && $touched}"
+			          ng-required="true"
+			          ng-model="faq.question"></textarea>
+		</label>
+		<label>
+			This is the answer
+			<textarea type="text"
+			          name="projectFaqAnswer_{{faq.name}}"
+			          ng-class="{'invalid': $invalid && $touched}"
+			          ng-required="true"
+			          ng-model="faq.answer"></textarea>
+		</label>
+		<a href
+		   class="five centered columns green button"
+		   ng-click="saveFaq(faq, $index)">Save FAQ</a>
+	</div>
+	<a href
+	   class="five centered columns blue button"
+	   ng-if="!faqNotFilledIn"
+	   ng-click="addFaq()">Add FAQ</a>
+</div>

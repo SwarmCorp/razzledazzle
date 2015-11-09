@@ -1,0 +1,67 @@
+<div class="container">
+	<div class="bg-transparent"
+	     da-spinner
+	     ng-show="loading"
+	     ng-style="{'min-height': 150}"></div>
+	<div ng-if="projects">
+		<nav class="filters">
+			<input class="six pull-right columns"
+			       type="text"
+			       ng-model="projectSearchFilter"
+			       placeholder="Search" />
+			<a href class="three columns button"
+			   ng-click="activeFilter = 'visibleProjects'"
+			   ng-class="{'blue': activeFilter == 'visibleProjects'}">All</a>
+			<a href class="three columns button"
+			   ng-click="activeFilter = 'openSaleProjects'"
+			   ng-class="{'blue': activeFilter == 'openSaleProjects'}">Open</a>
+			<a href class="three columns button"
+			   ng-click="activeFilter = 'completedProjects'"
+			   ng-class="{'blue': activeFilter == 'completedProjects'}">Completed</a>
+		</nav>
+		<h3 ng-if="!filtered.length"
+		    class="search-empty">Your search - <b>{{projectSearchFilter}}</b> - did not match any projects.</h3>
+		<ul ng-show="filtered.length">
+			<li class="project one-third column"
+	        ng-class="{'completed': isSaleCompleted(project), 'dco': project.project_type == 'DCO'}"
+			    ng-repeat="project in filtered = (projects | projectsFilter:activeFilter | filter:{project_name: projectSearchFilter}) track by $index">
+				<div class="project-logo" ng-style="projectCover(project)">
+					<a href class="button"
+					   ng-if="!isSaleCompleted(project)"
+					   ng-click="goToProject(project)"><b>Join</b> project</a>
+				</div>
+				<div class="project-content">
+					<h3>{{project.project_name}}</h3>
+					<p>{{project.project_description}}</p>
+					<div ng-if="project.project_type !== 'DCO'">
+						<ul class="metrics"
+						    ng-if="!isSaleCompleted(project) && !isPresale(project)">
+							<li>{{projectMetrics(project).number_of_backers || 0}} <span>members</span></li>
+							<li>{{projectMetrics(project).btc_raised | number: 2}}BTC <span>raised</span></li>
+							<li da-depriciation-countdown
+							    depreciation="projectMetrics(project).price_increase_date"
+							    ng-show="countdown">
+								{{countdown}}
+								<span>next price increase</span>
+							</li>
+						</ul>
+						<div class="completed-sale-info" ng-if="isSaleCompleted(project)">
+							<h4>Sale completed</h4>
+							<p>On {{completedSaleResult(project).date}}, {{completedSaleResult(project).raised}}BTC raised</p>
+						</div>
+						<div class="presale-info" ng-if="isPresale(project)">
+							<h4>Presale</h4>
+							<p>{{presaleData(project)}} till open sale</p>
+						</div>
+						<span class="progress" ng-style="{'width': projectMetrics(project).percentage_of_goal+'%'}"></span>
+					</div>
+				</div>
+				<a href class="star icon"
+				   title="{{project.project_starred ? 'UnStar project' : 'Star project'}}"
+				   ng-class="{'icon-star': project.project_starred, 'icon-star-o': !project.project_starred}"
+				   ng-if="starAvailable"
+				   ng-click="starProject(project)"></a>
+			</li>
+		</ul>
+	</div>
+</div>

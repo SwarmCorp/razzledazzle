@@ -1,0 +1,59 @@
+/* Smaller than standard 960 */
+$standard: 'only screen and (min-width: 960px)'
+@media #{$standard}
+	.standard-hide,
+	.table-hide
+		display: none !important
+	.tablet-show,
+	.tablet-portrait-show,
+	.mobile-show,
+	.mobile-portrait-show,
+	.mobile-landscape-show
+		display: none !important
+
+
+/* Smaller than standard 960 */
+$non-standard: 'only screen and (max-width: 959px)'
+.non-standard-hide
+	display: none !important
+.non-standard-show
+	display: block !important
+
+/* Tablet (Portrait) */
+$tablet-portrait: 'only screen and (min-width: 768px) and (max-width: 959px)'
+@media #{$tablet-portrait}
+	.tablet-portrait-hide,
+	.tablet-hide
+		display: none !important
+	.tablet-portrait-show,
+	.tablet-show
+		display: block !important
+
+$tablet-landscape: 'only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape)'
+@media #{$tablet-landscape}
+	.tablet-landscape-hide,
+	.tablet-hide
+		display: none !important
+	.tablet-landscape-show,
+	.tablet-show
+		display: block !important
+
+/* Mobile (Portrait) */
+$mobile-portrait:	'only screen and (max-width: 360px)'
+@media #{$mobile-portrait}
+	.mobile-portrait-hide,
+	.mobile-hide
+		display: none !important
+	.mobile-portrait-show,
+	.mobile-show
+		display: block !important
+
+/* Mobile (Landscape) */
+$mobile-landscape: 'only screen and (min-width: 361px) and (max-width: 767px)'
+@media #{$mobile-landscape}
+	.mobile-landscape-hide,
+	.mobile-hide
+		display: none !important
+	.mobile-landscape-show,
+	.mobile-show
+		display: block !important

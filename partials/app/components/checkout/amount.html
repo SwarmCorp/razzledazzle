@@ -1,0 +1,39 @@
+<header da-checkout-header></header>
+<section da-checkout-amount
+         class="container">
+
+	<h2 class="screen-title">Select amount</h2>
+	<div class="checkout-bundles eight columns offset-by-four">
+		<ul>
+			<li ng-repeat="asset in bundle.assets"
+					ng-class="{last: $last}">
+				<h5>
+					<span>{{asset.quantity * amount()}}</span>
+					{{asset.name}} coin{{ asset.quantity * amount() > 1 ? 's': '' }}
+				</h5>
+				<p>{{asset.description}}</p>
+			</li>
+		</ul>
+		<h3 class="total-amount"><i class="icon icon-bitcoin"></i>{{ ((bundle.price || 0) / 100000000) * amount() | number : 2 }}</h3>
+	</div>
+
+	<div class="amount-buttons one column">
+		<a href
+		   class="amount-add"
+		   ng-click="addAmount()">
+			<i class="icon icon-plus"></i>
+		</a>
+		<a href
+		   class="amount-subtract"
+		   ng-class="{disabled: substractionDisabled}"
+		   ng-click="subtractAmount()">
+			<i class="icon icon-minus"></i>
+		</a>
+	</div>
+	<footer class="mobile-footer standard-hide mobile-show">
+		<a href class="button green"
+		   ng-class="{disabled: buttonNextDisabled, loading: buttonLoading}"
+		   ng-disabled="buttonNextDisabled"
+		   ng-click="nextStep()">{{buttonNext()}}</a>
+	</footer>
+</section>

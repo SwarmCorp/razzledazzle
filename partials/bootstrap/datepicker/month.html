@@ -1,0 +1,16 @@
+<table role="grid" aria-labelledby="{{uniqueId}}-title" aria-activedescendant="{{activeDateId}}">
+  <thead>
+    <tr>
+      <th><button type="button" class="" ng-click="move(-1)" tabindex="-1"><i class="icon icon-angle-left"></i></button></th>
+      <th><button id="{{uniqueId}}-title" role="heading" aria-live="assertive" aria-atomic="true" type="button" ng-click="toggleMode()" tabindex="-1">{{title}}</button></th>
+      <th><button type="button" class="pull-right" ng-click="move(1)" tabindex="-1"><i class="icon icon-angle-right"></i></button></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="row-months" ng-repeat="row in rows track by $index">
+      <td ng-repeat="dt in row track by dt.date" class="text-center" role="gridcell" id="{{dt.uid}}" aria-disabled="{{!!dt.disabled}}">
+        <button type="button" ng-class="{active: isActive(dt), disabled: dt.disabled}" ng-click="select(dt.date)" ng-disabled="dt.disabled" tabindex="-1">{{dt.label}}</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

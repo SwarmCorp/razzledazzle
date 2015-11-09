@@ -1,0 +1,251 @@
+{
+  "bundles" : [ {
+    "assets" : [ {
+      "description" : "Comic book 1",
+      "name" : "COMICBOOK",
+      "quantity" : 1
+    }, {
+      "description" : "Comic book 2",
+      "name" : "COMICCOIN",
+      "quantity" : 300
+    } ],
+    "description" : "You will get 1 COMICBOOK coin redeemable for a COPY OF THE STANDARD EDITION of the first ever graphic novel on Bitcoin: The Hunt for Satoshi Nakamoto. You'll also get 300 COMICCOINS which will have voting rights in the future of the project and more.",
+    "display_name" : "Comic book",
+    "name" : "COMICBOOK",
+    "price" : 30000,
+    "status" : "Sold out",
+    "summary" : {
+      "line_1" : "Line 1",
+      "line_2" : "Line 2",
+      "line_3" : "Line 3",
+      "line_4" : "Line 4"
+    },
+    "type" : "coin"
+  }, {
+    "assets" : [ {
+      "description" : "Founder edition bronze 1",
+      "name" : "COMICSPECIAL",
+      "quantity" : 1
+    }, {
+      "description" : "Founder edition bronze 2",
+      "name" : "COMICCOIN",
+      "quantity" : 1200
+    } ],
+    "description" : "You will get 1 COMICSPECIAL coin which is redeemable for a COPY OF THE FOUNDERS EDITION of the comic. This edition has a hard cover and your name will be printed on a founders' roll call in the back cover. You'll also get 1200 COMICCOINS which will have voting rights in the future of the project and more.",
+    "display_name" : "Founder edition bronze",
+    "name" : "COMICFOUNDERBRONZE",
+    "price" : 20000000,
+    "summary" : {
+      "line_1" : "Line 1",
+      "line_2" : "Line 2",
+      "line_3" : "Line 3",
+      "line_4" : "Line 4"
+    },
+    "type" : "reward"
+  }, {
+    "assets" : [ {
+      "description" : "Founder edition silver 1",
+      "name" : "COMICSPECIAL",
+      "quantity" : 1
+    }, {
+      "description" : "Founder edition silver 2",
+      "name" : "COMICBOOK",
+      "quantity" : 2
+    }, {
+      "description" : "Founder edition silver 3",
+      "name" : "COMICBOOK",
+      "quantity" : 5
+    }, {
+      "description" : "Founder edition silver 4",
+      "name" : "COMICCOIN",
+      "quantity" : 3000
+    } ],
+    "description" : "You will get 1 COMICSPECIAL coin which is redeemable for a COPY OF THE FOUNDERS EDITION of the comic. This edition has a hard cover and your name will be printed on a founders' roll call in the back cover. Secondly you'll get 5 copies of the standard edition which will be sent to schools. You'll also get 3000 COMICCOINS which will have voting rights in the future of the project and more.",
+    "display_name" : "Founder edition silver",
+    "name" : "COMICFOUNDERSILVER",
+    "price" : "50000000",
+    "summary" : {
+      "line_1" : "Line 1",
+      "line_2" : "Line 2",
+      "line_3" : "Line 3",
+      "line_4" : "Line 4"
+    },
+    "type" : "reward"
+  }, {
+    "assets" : [ {
+      "description" : "Founder edition gold 1",
+      "name" : "COMICSPECIAL",
+      "quantity" : 2
+    }, {
+      "description" : "Founder edition gold 2",
+      "name" : "COMICBOOK",
+      "quantity" : 5
+    }, {
+      "description" : "Founder edition gold 3",
+      "destination" : "1CT9ui8DxxuHAigRqu7Y45Ujwzfhrzmu4E",
+      "name" : "COMICBOOK",
+      "quantity" : 10
+    }, {
+      "description" : "Founder edition gold 4",
+      "name" : "COMICCOIN",
+      "quantity" : 6000
+    } ],
+    "description" : "You will get 2 COMICSPECIAL coins which are redeemable for 2 COPIES OF THE FOUNDERS EDITION of the comic. This edition has a hard cover and your name will be printed on a founders' roll call in the back cover. Secondly you'll get 10 copies of the standard edition which will be sent to schools. You'll also get 6000 COMICCOINS which will have voting rights in the future of the project and more.",
+    "display_name" : "Founder edition gold",
+    "name" : "COMICFOUNDERGOLD",
+    "price" : 100000000,
+    "summary" : {
+      "line_1" : "Line 1",
+      "line_2" : "Line 2",
+      "line_3" : "Line 3",
+      "line_4" : "Line 4"
+    },
+    "type" : "reward"
+  }, {
+    "assets" : [ {
+      "description" : "BTC Hall of fame 1",
+      "name" : "COMICSPECIAL",
+      "quantity" : 2
+    }, {
+      "description" : "BTC Hall of fame 2",
+      "name" : "COMICBOOK",
+      "quantity" : 5
+    }, {
+      "description" : "BTC Hall of fame 3",
+      "name" : "COMICBOOK",
+      "quantity" : 10
+    }, {
+      "description" : "BTC Hall of fame 4",
+      "name" : "COMICCOIN",
+      "quantity" : 12000
+    } ],
+    "description" : "You will get 2 COMICSPECIAL coins which are redeemable for 2 COPIES OF THE FOUNDERS EDITION of the comic. This edition has a hard cover and your name will be printed on a founders' roll call in the back cover. Secondly you'll get 10 copies of the standard edition which will be sent to schools. Thirdly you'll be mentioned in the list of influential bitcoin people in the back of the book. You'll also get 12000 COMICCOINS which will have voting rights in the future of the project and more.",
+    "display_name" : "BTC Hall of fame",
+    "name" : "BTCHALLOFFAME",
+    "price" : 200000000,
+    "summary" : {
+      "line_1" : "Line 1",
+      "line_2" : "Line 2",
+      "line_3" : "Line 3",
+      "line_4" : "Line 4"
+    },
+    "type" : "reward"
+  }, {
+    "assets" : [ {
+      "description" : "Cameo bronze 1",
+      "name" : "COMICSPECIAL",
+      "quantity" : 5
+    }, {
+      "description" : "Cameo bronze 2",
+      "name" : "COMICBOOK",
+      "quantity" : 5
+    }, {
+      "description" : "Cameo bronze 3",
+      "name" : "COMICBOOK",
+      "quantity" : 10
+    }, {
+      "description" : "Cameo bronze 4",
+      "name" : "COMICCOIN",
+      "quantity" : 30000
+    } ],
+    "description" : "You will get 5 COMICSPECIAL coins which are redeemable for 5 COPIES OF THE FOUNDERS EDITION of the comic. This edition has a hard cover and your name will be printed on a founders' roll call in the back cover. Secondly you'll get 10 copies of the standard edition which will be sent to schools. Thirdly you'll be mentioned in the list of influential bitcoin people in the back of the book. You will appear in the comic - the illustrator will use a photo supplied by you to draw your image into the comic. You will receive the ORIGINAL artwork frame - signed by the authors and illustrator. You'll also get 30000 COMICCOINS which will have voting rights in the future of the project and more.",
+    "display_name" : "Cameo bronze",
+    "name" : "COMICBRONZE",
+    "price" : 500000000,
+    "summary" : {
+      "line_1" : "Line 1",
+      "line_2" : "Line 2",
+      "line_3" : "Line 3",
+      "line_4" : "Line 4"
+    },
+    "type" : "reward"
+  }, {
+    "assets" : [ {
+      "description" : "Cameo silver 1",
+      "name" : "COMICSPECIAL",
+      "quantity" : 5
+    }, {
+      "description" : "Cameo silver 2",
+      "name" : "COMICBOOK",
+      "quantity" : 5
+    }, {
+      "description" : "Cameo silver 3",
+      "name" : "COMICBOOK",
+      "quantity" : 10
+    }, {
+      "description" : "Cameo silver 4",
+      "name" : "COMICCOIN",
+      "quantity" : 60000
+    } ],
+    "description" : "You will get 5 COMICSPECIAL coins which are redeemable for 5 COPIES OF THE FOUNDERS EDITION of the comic. This edition has a hard cover and your name will be printed on a founders' roll call in the back cover. Secondly you'll get 10 copies of the standard edition which will be sent to schools. Thirdly you'll be mentioned in the list of influential bitcoin people in the back of the book. You will appear in the comic - the illustrator will use a photo supplied by you to draw your image into the comic. You will receive the ORIGINAL artwork frame - signed by the authors and illustrator. You will receive a copy of a hand produced special edition - large format book. You'll also get 60000 COMICCOINS which will have voting rights in the future of the project and more.",
+    "display_name" : "Cameo silver",
+    "name" : "COMICSILVER",
+    "price" : 1000000000,
+    "summary" : {
+      "line_1" : "Line 1",
+      "line_2" : "Line 2",
+      "line_3" : "Line 3",
+      "line_4" : "Line 4"
+    },
+    "type" : "reward"
+  }, {
+    "assets" : [ {
+      "description" : "Cameo gold 1",
+      "name" : "COMICSPECIAL",
+      "quantity" : 5
+    }, {
+      "description" : "Cameo gold 2",
+      "name" : "COMICBOOK",
+      "quantity" : 5
+    }, {
+      "description" : "Cameo gold 3",
+      "name" : "COMICBOOK",
+      "quantity" : 10
+    }, {
+      "description" : "Cameo gold 4",
+      "name" : "COMICCOIN",
+      "quantity" : 120000
+    } ],
+    "description" : "You will get 5 COMICSPECIAL coins which are redeemable for 5 COPIES OF THE FOUNDERS EDITION of the comic. This edition has a hard cover and your name will be printed on a founders' roll call in the back cover. Secondly you'll get 10 copies of the standard edition which will be sent to schools. Thirdly you'll be mentioned in the list of influential bitcoin people in the back of the book - A special feature about how you helped make this project possible. You will appear in the comic (all editions) - the illustrator will use a photo supplied by you to draw your image into the comic. You will receive the ORIGINAL artwork frame - signed by the authors and illustrator. A special illustration will be hand created by the illustrator of you along with the Bitcoincomic team.  This original artwork will be a ONE OFF - signed by the entire Bitcoin comic and Swarm team, Framed and sent to you. You will receive a copy of a hand produced special edition - large format book.. You'll also get 120000 COMICCOINS which will have voting rights in the future of the project and more.",
+    "display_name" : "Cameo gold",
+    "name" : "COMICGOLD",
+    "price" : 2000000000,
+    "summary" : {
+      "line_1" : "Line 1",
+      "line_2" : "Line 2",
+      "line_3" : "Line 3",
+      "line_4" : "Line 4"
+    },
+    "type" : "reward"
+  } ],
+  "metrics" : {
+    "btc_raised" : 2375000000,
+    "coins_per_btc" : 1200,
+    "days_remaining" : 19,
+    "goal" : 4200000000,
+    "number_of_backers" : 119,
+    "percentage_of_goal" : 56.548,
+    "price_increase_date" : "Nov 5, 2014 12:00:00 GMT"
+  },
+  "description" : [ {
+    "type" : "text",
+    "value" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mattis ac nibh vitae dignissim! Pellentesque aliquet urna vitae diam tempus molestie. Integer eu dui auctor, facilisis sapien eu, maximus magna."
+  }, {
+    "type" : "picture",
+    "value" : "http://placehold.it/150x150"
+  }, {
+    "type" : "text",
+    "value" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mattis ac nibh vitae dignissim! Pellentesque aliquet urna vitae diam tempus molestie. Integer eu dui auctor, facilisis sapien eu, maximus magna."
+  }, {
+    "type" : "video",
+    "value" : "//player.vimeo.com/video/106212266"
+  }, {
+    "type" : "text",
+    "value" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mattis ac nibh vitae dignissim! Pellentesque aliquet urna vitae diam tempus molestie. Integer eu dui auctor, facilisis sapien eu, maximus magna."
+  }, {
+    "type" : "picture",
+    "value" : "http://placehold.it/250x250"
+  } ],
+  "project_name" : "Shandro's test project",
+  "swarm_url" : "shandro"
+}

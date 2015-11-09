@@ -1,0 +1,31 @@
+<div class="sidebar-dco-view">
+	<a href class="back-to-projects"
+	   ng-click="backToDCOs()">Back to projects list</a>
+	<h4>{{project.project_name}}</h4>
+
+	<h5>Statement of intent</h5>
+	<p>{{project.project_statement}}</p>
+	<h5>Delegates</h5>
+	<ul class="delegates">
+		<li ng-repeat="delegate in project.project_delegates track by $index">
+			<p>
+				<span>{{delegate.first_name}} {{delegate.last_name}}</span> <a ng-href="mailto:{{delegate.email}}">({{delegate.email}})</a>
+			</p>
+		</li>
+	</ul>
+	<h5>Delegate responsibilities</h5>
+	<p>{{project.project_delegate_responsibilities}}</p>
+	<h5>Link to DCO contract</h5>
+	<a class="short-link" ng-href="{{project.project_contract}}" target="_blank">{{project.project_contract}}</a>
+	<div ng-if="project.project_budget">
+		<h5>Link to budget</h5>
+		<a class="short-link" ng-href="{{project.project_budget}}" target="_blank">{{project.project_budget}}</a>
+	</div>
+	<div class="actions five centered columns">
+		<a href class="button"
+		   ng-click="editDCO()">Edit Project</a>
+		<a href
+		   ng-click="deleteDCO()"
+		   ng-class="{confirm: removeConfirmed}">{{removeConfirmed ? 'Are you sure?' : 'Delete DCO project'}}</a>
+	</div>
+</div>

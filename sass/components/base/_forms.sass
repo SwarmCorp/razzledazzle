@@ -1,0 +1,69 @@
+@import 'variables'
+
+form
+	margin-bottom: 20px
+	input, input[type="text"], input[type="password"], input[type="email"], textarea, select
+		border: 1px solid $inputBorderColor
+		background: $inputBackgroundColor
+		color: $inputColor
+		display: inline-block
+		font: 16px $HelveticaNeueLt
+		line-height: 1.563em
+		margin-bottom: 20px
+		padding: 4px 15px 3px
+		width: 100%
+		outline: none
+		box-sizing: border-box
+		border-radius: 3px
+		transition: background .4s, color .4s, box-shadow .4s
+		-webkit-appearance: textfield
+		-webkit-box-sizing: border-box
+		&:disabled
+			-webkit-text-fill-color: #{$inputColor}
+		&:focus
+			border: 1px solid $lightGrayColor
+			color: $blackColor
+		&.invalid,
+		&.ng-touched.ng-invalid,
+		&.ng-dirty.ng-invalid
+			border: 1px solid $redColor
+			position: relative
+			color: $redColor
+			&::-webkit-input-placeholder,
+			&::-moz-placeholder,
+			&:-ms-input-placeholder
+				color: $redColor
+	input[type="checkbox"]
+		display: inline
+	textarea
+		resize: none
+		min-height: 60px
+	select
+		padding: 0
+		width: 100%
+	label
+		display: block
+		font-family: $HelveticaNeueRoman
+		font-size: 1.5em
+		line-height: 1em
+		text-indent: 14px
+		color: $labelColor
+		input
+			margin-top: 7px
+		span
+			font-family: $HelveticaNeueMedium
+			font-size: 1em
+			color: $darkGrayColor
+			&.error
+				display: block
+				padding-top: 20px
+				color: $redColor
+				font-family: $HelveticaNeueLt
+	&.form-submitted
+		input, textarea
+			&.ng-invalid, &.ng-untouched
+				border: 1px solid $redColor
+				color: $redColor
+			&.ng-untouched.ng-valid
+				border: 1px solid $inputBorderColor
+				color: $inputColor

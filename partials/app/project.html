@@ -1,0 +1,170 @@
+<section class="project-banner">
+	<div class="project-cover" ng-style="projectCover(project)"></div>
+	<div class="container">
+		<div class="banner-content twelve centered columns">
+			<span class="project-logo" ng-style="{'background-image': 'url('+project.project_logo+')'}"></span>
+			<h1 ng-bind-html="project.project_name"></h1>
+			<h2 ng-bind-html="project.project_description"></h2>
+			<ul class="metrics" ng-if="!isDCO">
+				<li>{{projectMetrics.days_remaining}} <span>days to go</span></li>
+				<li>{{projectMetrics.number_of_backers || 0}} <span>members</span></li>
+				<li>{{coinsForDollar | currency:undefined:3}} <span>{{project.project_coin}} fiat price</span></li>
+				<li ng-show="projectMetrics.price_increase_date">{{projectMetrics.price_increase_date}} <span>Next price increase</span></li>
+			</ul>
+			<span class="progress" ng-style="{'width': projectMetrics.percentage_of_goal+'%'}"></span>
+		</div>
+	</div>
+</section>
+<section class="project-nav">
+	<div class="container">
+		<nav class="twelve centered columns">
+			<img ng-src="" alt="" />
+			<a href
+			   ng-class="{'active': projectSection == 'description'}"
+			   ng-click="setSection('description')">Details</a>
+			<a href
+			   ng-show="project.company.forum"
+			   ng-class="{'active': projectSection == 'discussion'}"
+			   ng-click="setSection('discussion')">Discussion</a>
+			<a href
+			   target="_blank"
+			   ng-if="!isDCO || isDCO && project.project_join_url"
+			   class="pull-right button"
+			   ng-hide="socialVisible"
+			   ng-href="{{isDCO ? project.project_join_url : null}}"
+			   ng-click="!isDCO ? fund() : false"><b>Join</b> project</a>
+			<ul class="nav-social pull-right">
+				<li>
+					<a href
+					   da-social-share
+					   type="'facebook'"
+					   link="'http://swarm.fund/projects/'+project.$id"
+					   picture="project.project_thumbnail"
+					   caption="projectName+' on http://swarm.fund/'"
+					   description="'Check out the crowdsale of '+projectName+' on http://swarm.fund/'"
+					   tags="['swarmcorp', 'bitcoin', project.project_hashtag]"><i class="icon icon-facebook"></i></a>
+				</li>
+				<li>
+					<a href
+					   da-social-share
+					   type="'twitter'"
+					   link="'http://swarm.fund/projects/'+project.$id"
+					   picture="project.project_thumbnail"
+					   caption="projectName+'on http://swarm.fund/'"
+					   description="'Check out the crowdsale of '+projectName+' on http://swarm.fund/'"
+					   tags="['swarmcorp', 'bitcoin', project.project_hashtag]"><i class="icon icon-twitter"></i></a>
+				</li>
+				<li>
+					<a href
+					   da-social-share
+					   type="'googleplus'"
+					   link="'http://swarm.fund/projects/'+project.$id"
+					   picture="project.project_thumbnail"
+					   caption="projectName+'on http://swarm.fund/'"
+					   description="'Check out the crowdsale of '+projectName+' on http://swarm.fund/'"
+					   tags="['swarmcorp', 'bitcoin', project.project_hashtag]"><i class="icon icon-google-plus"></i></a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</section>
+<section class="project-description" ng-show="projectSection == 'description'">
+	<div class="container">
+		<div class="twelve centered columns">
+			<div class="description" ng-repeat="paragraph in project.description track by $index">
+				<div class="text"
+				     ng-if="paragraph.type == 'text'"
+				     ng-bind-html="paragraph.value"></div>
+				<img alt=""
+				     ng-if="paragraph.type == 'image'"
+				     ng-src="{{paragraph.value}}/convert?w=700&fit=scale&quality=100" />
+				<div class="video" ng-if="paragraph.type == 'video'">
+					<iframe style="width: 700px; height: 525px;" ng-src="{{trustSrc(paragraph.value)}}" frameborder="0" allowfullscreen></iframe>
+				</div>
+			</div>
+			<div class="faq" ng-if="project.faq">
+				<h3>Faq</h3>
+				<ul>
+					<li ng-repeat="faq in project.faq track by $index"
+					    ng-class="{'last': $last, 'active': activeFaqIndex == $index}">
+						<div class="question"
+						   ng-click="toggleFaq($index)"><p>{{faq.question}}</p></div>
+						<div class="answer"
+						   ng-show="activeFaqIndex == $index"><p>{{faq.answer}}</p></div>
+					</li>
+				</ul>
+			</div>
+			<div class="company" ng-if="project.company">
+				<h3>Company</h3>
+				<div class="company-description"
+				     ng-bind-html="project.company.description"></div>
+				<ul class="company-contacts">
+					<li class="four alpha columns"
+					    ng-if="project.company.phone">
+						<h5>Phone</h5>
+						<span>{{project.company.phone}}</span>
+					</li>
+					<li class="four columns"
+					    ng-if="project.company.email">
+						<h5>Email</h5>
+						<a target="_blank"
+						   ng-href="mailto:{{project.company.email}}">{{project.company.email}}</a>
+					</li>
+					<li class="four omega columns"
+					    ng-if="project.company.website">
+						<h5>Website</h5>
+						<a target="_blank"
+						   ng-href="{{project.company.website}}">{{project.company.website}}</a>
+					</li>
+					<li class="break"></li>
+					<li class="four alpha columns"
+					    ng-if="project.company.facebook">
+						<a href class="facebook button"
+						   target="_blank"
+						   ng-href="{{project.company.facebook}}">Facebook</a>
+					</li>
+					<li class="four columns"
+					    ng-if="project.company.twitter">
+						<a href class="twitter button"
+						   target="_blank"
+						   ng-href="{{project.company.twitter}}">Twitter</a>
+					</li>
+					<li class="four omega columns"
+					    ng-if="project.company.youtube">
+						<a href class="youtube button"
+						   target="_blank"
+						   ng-href="{{project.company.youtube}}">Youtube</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="project-discussion" ng-show="projectSection == 'discussion'">
+	<div class="container">
+		<div class="twelve centered columns">
+			<div class="project-discussion-topic"
+			     ng-repeat="projectDiscussionTopic in projectDiscussion track by $index"
+			     ng-class="{'last': $last}">
+				<ul>
+					<li class="project-discussion-post"
+					    ng-repeat="projectDiscussionPost in projectDiscussionTopic.posts track by $index">
+						<header class="post-header">
+							<img class="project-discussion-avatar"
+							     ng-src="{{projectDiscussionPost.avatar_template | discourseUserAvatar:45}}"
+							     alt="" />
+							<span class="project-discussion-username">{{projectDiscussionPost.display_username}}</span>
+							<span class="project-discussion-relative-date">{{projectDiscussionPost.created_at | relativeDate}}</span>
+						</header>
+						<h4 ng-if="$first">{{projectDiscussionTopic.title}}</h4>
+						<div da-discourse-compile="projectDiscussionPost.cooked"></div>
+						<span class="project-discussion-likes">{{projectDiscussionPost.like_count | discourseLike}}</span>
+					</li>
+				</ul>
+			</div>
+			<a class="discuss gray button"
+			   href="http://discourse.swarm.fund/c/swarm-projects/{{projectName}}"
+			   target="_blank">{{projectDiscussion.length ? 'Comment' : 'Be the first to comment'}}</a>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,21 @@
+<div class="wallet-new ten centered columns">
+	<h2 class="screen-title">
+		We’ve created a secret passphrase for you
+		<small>(Or you can <a href ng-click="useExisting()">use an existing one</a>)</small>
+	</h2>
+	<div class="step-description">
+		<p>
+			This passphrase gives you access to all your Bits. We strongly suggest you print
+			it out and put it somewhere very safe, because it’s only with this passphrase that you can access your Bits.
+		</p>
+		<p>
+			We strongly recommend printing this immediately and storing paper copies only.
+		</p>
+	</div>
+	<div class="passphrase-holder">
+		<span class="passphrase">{{userWallet.passphrase}}</span>
+	</div>
+	<i class="angle icon icon-angle-bottom"></i>
+	<a class="ten columns dark-gray alpha button"
+	   ng-click="downloadWallet()"><b>Download</b> paper wallet</a>
+</div>

@@ -1,0 +1,59 @@
+<div class="sidebar-content sidebar-wallet">
+	<form name="form.wallet"
+	      ng-submit="formSubmit()"
+	      novalidate>
+		<div da-spinner ng-show="loading"></div>
+		<h4>Wallet</h4>
+		<div ng-form="form.userWallet" ng-if="(userInfoLoaded && !userInfo.wallet) || editMode">
+			<label class="field-wallet">
+				Wallet address
+				<input da-validate-wallet-input
+				       class="input-address"
+				       type="text"
+				       name="wallet"
+				       ng-required="true"
+				       ng-model="userWallet" />
+				<i class="icon icon-check"
+				   ng-if="isAddressValid()"></i>
+				<span class="error" ng-if="form.userWallet.wallet.$touched && form.userWallet.wallet.$invalid">Valid wallet address is required</span>
+			</label>
+			<p ng-if="isAddressValid()">Watch out. This address will be used to send assets to, bought on Swarm.</p>
+			<a href
+			   class="wallet-create blue button"
+			   ng-show="!isAddressValid()"
+			   ng-click="createWallet()">I need a new wallet</a>
+			<input ng-if="isAddressValid()"
+			       type="submit"
+			       value="Save changes">
+			<a href
+			   class="edit-cancel"
+			   ng-if="editMode"
+			   ng-click="toggleEditMode()">Cancel</a>
+		</div>
+		<div ng-if="userInfo.wallet && !editMode">
+			<div class="holdings" ng-if="assets">
+				<ul>
+					<li class="asset" ng-repeat="asset in assets track by $index">
+						<span class="asset-name">{{asset.asset}}</span>
+						<span class="asset-quantity">{{asset.balance}}</span>
+					</li>
+				</ul>
+			</div>
+			<input da-validate-wallet-input
+			       class="input-address"
+			       type="text"
+			       name="wallet"
+			       ng-readonly="true"
+			       ng-model="userWallet" />
+			<a href
+			   class="edit"
+			   ng-click="toggleEditMode()">Change address</a>
+		</div>
+	</form>
+	<!-- Melotic trading widget-->
+	<div da-melotic
+	     trading-market="'swarm-btc'"
+	     id="melotic-widget"
+	     class="melotic-widget"
+	     ng-if="assets"></div>
+</div>
